@@ -1,31 +1,26 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MOVIMENTO : MonoBehaviour
 {
     public float speed = 5f;
-    public float gravity = -9.81f;
 
-    private CharacterController controller;
-    private Vector3 velocity;
+    private Vector2 input;
+    private Rigidbody rb;
 
-    void Start()
+    void Awake()
     {
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    public void OnMove(InputValue value)
     {
-        float x = Input.GetAxis("Horizontal"); // A / D
-        float z = Input.GetAxis("Vertical");   // W / S
+        input = value.Get<Vector2>();
+    }
 
-        Vector3 move = transform.right * x + transform.forward * z;
-        controller.Move(move * speed * Time.deltaTime);
-
-        // Gravedad
-        if (controller.isGrounded && velocity.y < 0)
-            velocity.y = -2f;
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+    void FixedUpdate()
+    {
+        Vector3 movement = new Vector3(input.x, 0f, input.y);
+        rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
     }
 }
