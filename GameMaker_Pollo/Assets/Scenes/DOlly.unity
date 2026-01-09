@@ -179,10 +179,10 @@ MonoBehaviour:
         z: 43.59809
       Rotation:
         value:
-          x: 0.000033959135
+          x: 0.000033974276
           y: 0.99999815
           z: 0.0019048647
-          w: 0.00037031868
+          w: 0.00037031865
     - Position:
         x: 0.6
         y: 0.6
@@ -2502,7 +2502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manos: {fileID: 332926451}
-  fuerzaLanzamiento: 9.5
+  fuerzaLanzamiento: 6.5
   esperaParaRecoger: 1.5
   Listacolores:
   - {r: 1, g: 0.8008418, b: 0, a: 0}
@@ -2756,7 +2756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manos: {fileID: 1468357274}
-  fuerzaLanzamiento: 9.5
+  fuerzaLanzamiento: 6.5
   esperaParaRecoger: 1.5
   Listacolores:
   - {r: 1, g: 0.8008418, b: 0, a: 0}
