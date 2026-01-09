@@ -179,10 +179,10 @@ MonoBehaviour:
         z: 43.59809
       Rotation:
         value:
-          x: 0.000033943525
+          x: 0.000033959135
           y: 0.99999815
-          z: 0.0019048646
-          w: 0.0003703187
+          z: 0.0019048647
+          w: 0.00037031868
     - Position:
         x: 0.6
         y: 0.6
@@ -2514,6 +2514,8 @@ MonoBehaviour:
   - {r: 0, g: 0, b: 0, a: 0}
   Colores: 0
   Tiempo: 0
+  polloagent: {fileID: 1537927845}
+  chickenGoal: {fileID: 1752698179}
   pollo: {fileID: 1537927835}
 --- !u!1 &874979113
 GameObject:
@@ -2766,6 +2768,8 @@ MonoBehaviour:
   - {r: 0, g: 0, b: 0, a: 0}
   Colores: 0
   Tiempo: 0
+  polloagent: {fileID: 1537927845}
+  chickenGoal: {fileID: 1752698179}
   pollo: {fileID: 1537927835}
 --- !u!1 &1058644547
 GameObject:
@@ -2887,6 +2891,7 @@ GameObject:
   - component: {fileID: 1128128131}
   - component: {fileID: 1128128130}
   - component: {fileID: 1128128129}
+  - component: {fileID: 1128128133}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2983,6 +2988,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1128128133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128128128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.06666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 338ec85bd95e6a44d947f513750c3cf6, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &1164709361
 GameObject:
   m_ObjectHideFlags: 0
@@ -3434,6 +3471,10 @@ PrefabInstance:
     - target: {fileID: 997352882399505176, guid: b50553b1368f1b843b9393968ce8ef30, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 997352882399505176, guid: b50553b1368f1b843b9393968ce8ef30, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1706499804572773796, guid: b50553b1368f1b843b9393968ce8ef30, type: 3}
       propertyPath: speed
@@ -4347,6 +4388,7 @@ GameObject:
   - component: {fileID: 1537927842}
   - component: {fileID: 1537927843}
   - component: {fileID: 1537927844}
+  - component: {fileID: 1537927845}
   m_Layer: 0
   m_Name: pollo
   m_TagString: Pollo
@@ -4539,6 +4581,28 @@ MonoBehaviour:
   Colores: 0
   Tiempo: 0
   chicken_Take: {fileID: 965446885}
+--- !u!195 &1537927845
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537927835}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1540126626
 GameObject:
   m_ObjectHideFlags: 0
@@ -5276,8 +5340,9 @@ GameObject:
   - component: {fileID: 1752698183}
   - component: {fileID: 1752698182}
   - component: {fileID: 1752698181}
+  - component: {fileID: 1752698184}
   m_Layer: 0
-  m_Name: ww
+  m_Name: Toxic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5313,7 +5378,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -5372,6 +5437,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752698179}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1752698184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752698179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcbc677383d1c464badc00b3dd99ae9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1767879190
 GameObject:
   m_ObjectHideFlags: 0
@@ -6077,6 +6154,10 @@ PrefabInstance:
     - target: {fileID: 997352882399505176, guid: b50553b1368f1b843b9393968ce8ef30, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 997352882399505176, guid: b50553b1368f1b843b9393968ce8ef30, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1706499804572773796, guid: b50553b1368f1b843b9393968ce8ef30, type: 3}
       propertyPath: speed

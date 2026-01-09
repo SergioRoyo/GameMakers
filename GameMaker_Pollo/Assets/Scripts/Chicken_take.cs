@@ -2,6 +2,7 @@ using System.Drawing;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
 
 public class Chicken_take : MonoBehaviour
 {
@@ -19,15 +20,23 @@ public class Chicken_take : MonoBehaviour
     public UnityEngine.Color[] Listacolores;
     public int Colores = 0;
     public int Tiempo = 0;
+    public NavMeshAgent polloagent;
+    public GameObject chickenGoal;
 
     public GameObject pollo;
 
+    public void Start()
+    {
+        polloagent.destination = chickenGoal.transform.position;
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (estaCargando)
             {
+                polloagent.isStopped = false;
+                polloagent.destination = chickenGoal.transform.position;
                 DropChicken();
             }
             else if (objetoCerca != null)
@@ -38,6 +47,7 @@ public class Chicken_take : MonoBehaviour
 
                 if (esDiferenteJugador && tiempoCumplido)
                 {
+                    polloagent.isStopped = true;
                     TakeChicken();
                 }
                 
