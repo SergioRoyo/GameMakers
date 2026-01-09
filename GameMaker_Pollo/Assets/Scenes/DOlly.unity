@@ -179,10 +179,10 @@ MonoBehaviour:
         z: 43.59809
       Rotation:
         value:
-          x: 0.00003379158
+          x: 0.000033803553
           y: 0.99999815
           z: 0.0019048648
-          w: 0.00037031903
+          w: 0.00037031897
     - Position:
         x: 0.6
         y: 0.6
@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 239894732}
   - component: {fileID: 239894731}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Suelo 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 340068577}
   - component: {fileID: 340068576}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Suelo 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2464,7 +2464,7 @@ GameObject:
   - component: {fileID: 1128128130}
   - component: {fileID: 1128128129}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Suelo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3542,7 +3542,7 @@ GameObject:
   - component: {fileID: 1537927836}
   - component: {fileID: 1537927841}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Pollo
   m_TagString: Pollo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3592,7 +3592,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6cbd3a0e54710394884ad966c41fb08b, type: 2}
+  - {fileID: 2100000, guid: 1c289eaaa39beb54083a65590cdd2185, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3698,7 +3698,7 @@ GameObject:
   - component: {fileID: 1597545149}
   - component: {fileID: 1597545148}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Suelo 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4238,7 +4238,7 @@ GameObject:
   - component: {fileID: 1752698182}
   - component: {fileID: 1752698181}
   m_Layer: 0
-  m_Name: ww
+  m_Name: Toxic Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
