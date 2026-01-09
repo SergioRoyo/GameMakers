@@ -179,10 +179,10 @@ MonoBehaviour:
         z: 43.59809
       Rotation:
         value:
-          x: 0.00003379158
+          x: 0.000033824086
           y: 0.99999815
           z: 0.0019048648
-          w: 0.00037031903
+          w: 0.00037031894
     - Position:
         x: 0.6
         y: 0.6
@@ -3541,6 +3541,7 @@ GameObject:
   - component: {fileID: 1537927840}
   - component: {fileID: 1537927836}
   - component: {fileID: 1537927841}
+  - component: {fileID: 1537927842}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Pollo
@@ -3685,6 +3686,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1537927842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537927835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5cfe0c32d821294abde205ae93d90d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states: 0
 --- !u!1 &1597545147
 GameObject:
   m_ObjectHideFlags: 0
