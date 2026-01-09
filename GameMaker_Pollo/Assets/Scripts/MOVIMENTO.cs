@@ -1,5 +1,7 @@
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MOVIMENTO : MonoBehaviour
 {
@@ -40,7 +42,6 @@ public class MOVIMENTO : MonoBehaviour
         //Vector3 movement = new Vector3(input.x, 0f, input.y);
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
     }
-
     private void OnCollisionStay(Collision col) => isGrounded = true;
     private void OnCollisionExit(Collision col) => isGrounded = false;
 }

@@ -1,4 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Chicken_take : MonoBehaviour
 {
@@ -6,12 +9,18 @@ public class Chicken_take : MonoBehaviour
     public float fuerzaLanzamiento = 5f;
 
     private GameObject objetoCerca;
+    public GameObject chickenGoal;
+    public NavMeshAgent pollo;
     private bool estaCargando = false;
 
     // VARIABLE CLAVE: Guardamos quién fue el último en sueltar este objeto específico
     // Usamos una variable estática para que todos los pollos sepan quién fue el último "dueño"
     private static GameObject ultimoDueno;
 
+    public void Start()
+    {
+        pollo.destination = chickenGoal.transform.position;
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -19,11 +28,14 @@ public class Chicken_take : MonoBehaviour
             if (estaCargando)
             {
                 DropChicken();
+                pollo.isStopped = false;
+                pollo.destination = chickenGoal.transform.position;
             }
             // Condición: Si hay un objeto cerca Y (yo no fui el último en soltarlo O nadie lo ha soltado aún)
             else if (objetoCerca != null && ultimoDueno != gameObject)
             {
                 TakeChicken();
+                pollo.isStopped=true;
             }
         }
     }
