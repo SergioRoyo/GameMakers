@@ -260,7 +260,7 @@
                 {
                     "name": "",
                     "id": "49bfb4ae-560c-407e-ad03-c71e4c46ff23",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/numpad0",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -282,7 +282,7 @@
                 {
                     "name": "",
                     "id": "8a1e5a5a-1396-49c9-9c61-d7c6b51cedeb",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/numpadPeriod",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

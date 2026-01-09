@@ -158,7 +158,8 @@ public class Chicken_take : MonoBehaviour
 
     public NavMeshAgent polloagent;
     public GameObject chickenGoal;
-    public GameObject pollo; // El objeto f�sico del pollo
+    public GameObject pollo;
+    public KeyCode teclaInteractuar = KeyCode.E;// El objeto f�sico del pollo
 
     void Start()
     {
@@ -168,7 +169,7 @@ public class Chicken_take : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(teclaInteractuar))
         {
             if (estaCargando)
             {
