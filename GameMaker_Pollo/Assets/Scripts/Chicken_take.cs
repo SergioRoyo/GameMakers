@@ -1,16 +1,26 @@
+using System.Drawing;
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Chicken_take : MonoBehaviour
 {
     public Transform manos;
     public float fuerzaLanzamiento = 5f;
+    public float esperaParaRecoger = 2f; // Segundos de espera
 
     private GameObject objetoCerca;
     private bool estaCargando = false;
 
-    // VARIABLE CLAVE: Guardamos quién fue el último en sueltar este objeto específico
-    // Usamos una variable estática para que todos los pollos sepan quién fue el último "dueño"
+    // Variables estáticas (compartidas por todos los jugadores)
     private static GameObject ultimoDueno;
+    private static float tiempoUltimoDrop;
+
+    public UnityEngine.Color[] Listacolores;
+    public int Colores = 0;
+    public int Tiempo = 0;
+
+    public GameObject pollo;
 
     void Update()
     {
@@ -20,16 +30,24 @@ public class Chicken_take : MonoBehaviour
             {
                 DropChicken();
             }
-            // Condición: Si hay un objeto cerca Y (yo no fui el último en soltarlo O nadie lo ha soltado aún)
-            else if (objetoCerca != null && ultimoDueno != gameObject)
+            else if (objetoCerca != null)
             {
-                TakeChicken();
+                
+                bool esDiferenteJugador = ultimoDueno != gameObject;
+                bool tiempoCumplido = Time.time > tiempoUltimoDrop + esperaParaRecoger;
+
+                if (esDiferenteJugador && tiempoCumplido)
+                {
+                    TakeChicken();
+                }
+                
             }
         }
     }
 
     void TakeChicken()
     {
+        
         estaCargando = true;
         objetoCerca.transform.SetParent(manos);
         objetoCerca.transform.localPosition = Vector3.zero;
@@ -40,25 +58,29 @@ public class Chicken_take : MonoBehaviour
 
         if (objetoCerca.GetComponent<Collider>())
             objetoCerca.GetComponent<Collider>().enabled = false;
+        StartCoroutine(changeColor());
     }
 
-    void DropChicken()
+    public void DropChicken()
     {
         estaCargando = false;
 
-        // Marcamos a ESTE jugador como el último dueño al soltarlo
+        // Registramos quién lo soltó y en qué segundo
         ultimoDueno = gameObject;
+        tiempoUltimoDrop = Time.time;
 
         Rigidbody rb = objetoCerca.GetComponent<Rigidbody>();
         Collider col = objetoCerca.GetComponent<Collider>();
 
         objetoCerca.transform.SetParent(null);
+
+        // Separar del cuerpo para no empujar al jugador
         objetoCerca.transform.position = transform.position + transform.forward * 1.2f;
 
         if (rb != null)
         {
             rb.isKinematic = false;
-            rb.AddForce((Vector3.up + transform.forward * 0.2f) * fuerzaLanzamiento, ForceMode.Impulse);
+            rb.AddForce((Vector3.up + transform.forward * 0.3f) * fuerzaLanzamiento, ForceMode.Impulse);
         }
 
         if (col != null)
@@ -81,5 +103,25 @@ public class Chicken_take : MonoBehaviour
         {
             objetoCerca = null;
         }
+    }
+    IEnumerator changeColor()
+    {
+        yield return new WaitForSeconds(1f);
+        if (Tiempo == 5)
+        {
+           DropChicken();
+            pollo.GetComponent<Renderer>().material.color = Listacolores[0];
+
+        }
+        else
+        {
+            pollo.GetComponent<Renderer>().material.color = Listacolores[Colores++];
+            Tiempo++;
+
+            StartCoroutine(changeColor());
+        }
+
+
+
     }
 }
