@@ -1,69 +1,106 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(LineRenderer))]
 public class PrediccionTrayectoria : MonoBehaviour
 {
-    [Header("Configuración")]
+    [Header("ConexiÃ³n con Controles")]
+    public InputActionReference accionApuntar;
+
+    [Header("ConfiguraciÃ³n")]
     public Transform puntoDisparo;
-    public GameObject proyectilPrefab; // <--- AQUÍ ARRASTRAS TU BALA/GRANADA
-    public float fuerzaLanzamiento = 15f;
-    public int calidadLinea = 30;
-    public float espacioEntrePuntos = 0.1f;
+    public GameObject proyectilPrefab;
+    public float fuerzaMaxima = 30f;
+    [Range(0f, 2f)] public float alturaTiro = 0.5f; // <--- NUEVA VARIABLE PARA EL ARCO
+
+    public int calidadLinea = 50;
+    public float espacioEntrePuntos = 0.05f;
 
     LineRenderer lr;
+    bool estabaApuntando = false;
+    float fuerzaParaDisparar = 0f;
 
     void Start()
     {
         lr = GetComponent<LineRenderer>();
+        lr.enabled = false;
+        if (accionApuntar != null) accionApuntar.action.Enable();
     }
 
     void Update()
     {
-        // 1. MIENTRAS APRETAMOS: Dibujamos la línea
-        // (Usa "Fire1" para Joystick/Mando o MouseButton para ratón)
-        if (Input.GetButton("Fire1") || Input.GetMouseButton(0))
+        if (accionApuntar == null) return;
+
+        float presion = accionApuntar.action.ReadValue<float>();
+
+        if (presion > 0.1f)
         {
             lr.enabled = true;
-            DibujarPrediccion();
-        }
+            estabaApuntando = true;
+            fuerzaParaDisparar = fuerzaMaxima * presion;
 
-        // 2. AL SOLTAR: Disparamos y borramos línea
-        if (Input.GetButtonUp("Fire1") || Input.GetMouseButtonUp(0))
+            DibujarPrediccion(fuerzaParaDisparar);
+        }
+        else if (estabaApuntando)
         {
             lr.enabled = false;
-            Lanzar();
+            Lanzar(fuerzaParaDisparar);
+            estabaApuntando = false;
+            fuerzaParaDisparar = 0f;
         }
     }
 
-    void DibujarPrediccion()
+    // FunciÃ³n auxiliar para calcular la direcciÃ³n con curva hacia arriba
+    Vector3 CalcularVelocidad(float fuerza)
+    {
+        // Mezclamos: Ir hacia adelante + Ir hacia arriba
+        Vector3 direccion = puntoDisparo.forward + (Vector3.up * alturaTiro);
+
+        // .normalized es importante para que la 'altura' no cambie la velocidad total
+        return direccion.normalized * fuerza;
+    }
+
+    void DibujarPrediccion(float fuerza)
     {
         lr.positionCount = calidadLinea;
         Vector3[] puntos = new Vector3[calidadLinea];
         Vector3 posicionInicial = puntoDisparo.position;
-        Vector3 velocidad = puntoDisparo.forward * fuerzaLanzamiento;
+
+        // USAMOS LA NUEVA FÃ“RMULA
+        Vector3 velocidad = CalcularVelocidad(fuerza);
 
         for (int i = 0; i < calidadLinea; i++)
         {
             float tiempo = i * espacioEntrePuntos;
-            // Fórmula mágica de física
             Vector3 pos = posicionInicial + (velocidad * tiempo) + (Physics.gravity * 0.5f * tiempo * tiempo);
             puntos[i] = pos;
         }
         lr.SetPositions(puntos);
     }
 
-    void Lanzar()
+    void Lanzar(float fuerza)
     {
-        // A. Crear el objeto en la posición de la mano
         GameObject nuevoObjeto = Instantiate(proyectilPrefab, puntoDisparo.position, puntoDisparo.rotation);
-
-        // B. Buscar su Rigidbody
         Rigidbody rb = nuevoObjeto.GetComponent<Rigidbody>();
 
-        // C. ¡Importante! Darle EXACTAMENTE la misma velocidad que usamos en la línea
+        // --- SOLUCIÃ“N COLISIÃ“N ---
+        // Buscamos el collider del jugador (tu propio cuerpo)
+        Collider miCuerpo = GetComponent<Collider>();
+        // Si no tienes collider normal, prueba con CharacterController
+        if (miCuerpo == null) miCuerpo = GetComponent<CharacterController>();
+
+        Collider cuerpoBala = nuevoObjeto.GetComponent<Collider>();
+
+        // Le decimos a Unity: "Ignora el choque entre estos dos"
+        if (miCuerpo != null && cuerpoBala != null)
+        {
+            Physics.IgnoreCollision(miCuerpo, cuerpoBala);
+        }
+        // -------------------------
+
         if (rb != null)
         {
-            rb.linearVelocity = puntoDisparo.forward * fuerzaLanzamiento;
+            rb.linearVelocity = CalcularVelocidad(fuerza);
         }
     }
 }
