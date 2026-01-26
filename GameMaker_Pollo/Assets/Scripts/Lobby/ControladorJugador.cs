@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-// REGLA IMPORTANTE: El archivo debe llamarse "ControladorJugador.cs" para que funcione.
 
 public class ControladorJugador : MonoBehaviour
 {
