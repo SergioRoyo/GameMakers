@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,9 @@ public class Lobby_Management : MonoBehaviour
     public bool  team=false;
     public bool teamChosed = false;
     public enum Equipos { team1, team2 }
-    public Equipos equipos; 
+    public Equipos equipos;
+
+    private List<ControladorJugador> listaJugadores = new List<ControladorJugador>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -53,6 +56,7 @@ public class Lobby_Management : MonoBehaviour
     public void NewPlayer(PlayerInput input)
     {
         PlayerConected++;
+        listaJugadores.Add(input.GetComponent<ControladorJugador>());
     }
 
 }
