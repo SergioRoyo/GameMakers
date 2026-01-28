@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -3668468891802940170}
   - component: {fileID: -1200320117897512950}
   - component: {fileID: -3913595889844097268}
+  - component: {fileID: 7628127632545064759}
   m_Layer: 0
   m_Name: 2Players
   m_TagString: Untagged
@@ -134,6 +135,28 @@ CapsuleCollider:
   m_Height: 2.0468988
   m_Direction: 1
   m_Center: {x: 0, y: 0.4984493, z: 0}
+--- !u!114 &7628127632545064759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021747282914653060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1fb53bc8475e34382ce14c0b72bf8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manos: {fileID: 0}
+  fuerzaLanzamiento: 5
+  esperaParaRecoger: 2
+  Listacolores: []
+  Colores: 0
+  Tiempo: 0
+  polloagent: {fileID: 0}
+  chickenGoal: {fileID: 0}
+  pollo: {fileID: 0}
+  teclaInteractuar: 101
 --- !u!1001 &1119507450026676955
 PrefabInstance:
   m_ObjectHideFlags: 0

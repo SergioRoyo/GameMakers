@@ -1,6 +1,7 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Chicken_take : MonoBehaviour
 {
@@ -27,6 +28,25 @@ public class Chicken_take : MonoBehaviour
     {
         if (polloagent != null)
             polloagent.destination = chickenGoal.transform.position;
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += BusquedaDeObjetos;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= BusquedaDeObjetos;
+    }
+    void BusquedaDeObjetos(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name== "GAMEPLAY_Scene")
+        {
+            //pollo= GameObject.Find ("Pollo");
+            pollo= GameObject.FindGameObjectWithTag("Pollo");
+            polloagent= pollo.transform.GetComponent<NavMeshAgent>();
+            chickenGoal = GameObject.FindGameObjectWithTag("TOXIC");
+        }
     }
 
     void Update()
