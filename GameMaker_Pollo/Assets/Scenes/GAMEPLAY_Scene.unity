@@ -1037,13 +1037,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 212174852158036231, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
+      propertyPath: states
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212174852158036231, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1274430475747641231, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
       propertyPath: m_Name
       value: pollo
       objectReference: {fileID: 0}
     - target: {fileID: 2382443170317231461, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.29
       objectReference: {fileID: 0}
     - target: {fileID: 2382443170317231461, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
       propertyPath: m_LocalPosition.y

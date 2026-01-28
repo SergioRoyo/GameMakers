@@ -46,26 +46,44 @@ public class Chicken_take : MonoBehaviour
             pollo= GameObject.FindGameObjectWithTag("Pollo");
             polloagent= pollo.transform.GetComponent<NavMeshAgent>();
             chickenGoal = GameObject.FindGameObjectWithTag("TOXIC");
+            polloagent.destination = chickenGoal.transform.position;
         }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(teclaInteractuar))
-        {
-            if (estaCargando)
-            {
-                DropChicken();
-            }
-            else if (objetoCerca != null)
-            {
-                bool esDiferenteJugador = ultimoDueno != gameObject;
-                bool tiempoCumplido = Time.time > tiempoUltimoDrop + esperaParaRecoger;
+        //if (Input.GetKeyDown(teclaInteractuar))
+        //{
+        //    if (estaCargando)
+        //    {
+        //        DropChicken();
+        //    }
+        //    else if (objetoCerca != null)
+        //    {
+        //        bool esDiferenteJugador = ultimoDueno != gameObject;
+        //        bool tiempoCumplido = Time.time > tiempoUltimoDrop + esperaParaRecoger;
 
-                if (esDiferenteJugador && tiempoCumplido)
-                {
-                    TakeChicken();
-                }
+        //        if (esDiferenteJugador && tiempoCumplido)
+        //        {
+        //            TakeChicken();
+        //        }
+        //    }
+        //}
+    }
+    public void OnTake()
+    {
+        if (estaCargando)
+        {
+            DropChicken();
+        }
+        else if (objetoCerca != null)
+        {
+            bool esDiferenteJugador = ultimoDueno != gameObject;
+            bool tiempoCumplido = Time.time > tiempoUltimoDrop + esperaParaRecoger;
+
+            if (esDiferenteJugador && tiempoCumplido)
+            {
+                TakeChicken();
             }
         }
     }
