@@ -22,7 +22,9 @@ public class Chicken_take : MonoBehaviour
     public NavMeshAgent polloagent;
     public GameObject chickenGoal;
     public GameObject pollo;
-    public KeyCode teclaInteractuar = KeyCode.E;
+
+    public float timeCaidaPollo = 2f;
+    //public KeyCode teclaInteractuar = KeyCode.E;
 
     void Start()
     {
@@ -141,7 +143,7 @@ public class Chicken_take : MonoBehaviour
     IEnumerator EsperarAterrizaje()
     {
         
-        yield return new WaitForSeconds(.8f);
+        yield return new WaitForSeconds(timeCaidaPollo);
 
      
         Rigidbody rb = pollo.GetComponent<Rigidbody>();

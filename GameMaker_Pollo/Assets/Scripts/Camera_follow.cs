@@ -22,7 +22,11 @@ public class RailCameraDriver : MonoBehaviour
     void Start()
     {
         currentSpeed = baseSpeed;
-      
+        GameObject[] Jugadores = GameObject.FindGameObjectsWithTag("Player");
+        players[0] = Jugadores[0].transform;
+        players[1] = Jugadores[1].transform;
+
+
     }
 
     void Update()
