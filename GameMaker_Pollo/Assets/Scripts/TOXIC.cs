@@ -18,7 +18,7 @@ public class TOXIC : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")||other.CompareTag("Pollo"))
         {
-            SceneManager.LoadScene("DOlly");
+            SceneManager.LoadScene(0);
         }
     }
 }
