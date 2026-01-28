@@ -1,13 +1,17 @@
 using UnityEngine;
 using Unity.Cinemachine;
 using UnityEngine.Splines;
+using Unity.VisualScripting;
 
 public class RailCameraDriver : MonoBehaviour
 {
+
+    public static RailCameraDriver Instance;
+
     [Header("Referencias")]
     public CinemachineSplineCart splineCart;
     public SplineContainer splinePath;
-    public Transform[] players;
+    public GameObject[] players;
 
     [Header("Configuración de Velocidad")]
     public float baseSpeed = 5f;
@@ -19,14 +23,21 @@ public class RailCameraDriver : MonoBehaviour
 
     private float currentSpeed;
 
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
     void Start()
     {
         currentSpeed = baseSpeed;
-        GameObject[] Jugadores = GameObject.FindGameObjectsWithTag("Player");
-        players[0] = Jugadores[0].transform;
-        players[1] = Jugadores[1].transform;
-
-
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
 
     void Update()
@@ -35,12 +46,12 @@ public class RailCameraDriver : MonoBehaviour
 
         float maxPlayerDist = 0f;
 
-        foreach (Transform player in players)
+        foreach (GameObject player in players)
         {
             if (player == null) continue;
 
             // Encontrar punto más cercano
-            SplineUtility.GetNearestPoint(splinePath.Spline, splinePath.transform.InverseTransformPoint(player.position), out var nearestPoint, out float t);
+            SplineUtility.GetNearestPoint(splinePath.Spline, splinePath.transform.InverseTransformPoint(player.transform.position), out var nearestPoint, out float t);
 
             float playerDist = t * splinePath.CalculateLength();
 

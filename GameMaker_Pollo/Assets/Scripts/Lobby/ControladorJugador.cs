@@ -21,6 +21,7 @@ public class ControladorJugador : MonoBehaviour
 
         // Esto hace que el jugador no se borre al cambiar de escena
         DontDestroyOnLoad(this.gameObject);
+        
     }
 
     //  LOBBY

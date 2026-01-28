@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class TOXIC : MonoBehaviour
 {
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,9 +18,15 @@ public class TOXIC : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player")||other.CompareTag("Pollo"))
+        if (other.CompareTag("Player")||other.CompareTag("Pollo"))
         {
+            foreach(GameObject player in RailCameraDriver.Instance.players)
+            {
+                Destroy(player);
+            }
+            Destroy(GameObject.FindGameObjectWithTag("Pollo"));
             SceneManager.LoadScene(0);
+            
         }
     }
 }
