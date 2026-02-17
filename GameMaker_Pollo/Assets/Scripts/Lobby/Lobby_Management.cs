@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class Lobby_Management : MonoBehaviour
 {
     public int PlayerConected = 0;
-    public bool  team=false;
+    public bool team = false;
     public bool teamChosed = false;
     public enum Equipos { team1, team2 }
     public Equipos equipos;
+    public GameObject startButton;
+    
 
     public GameObject team1panel;
     public GameObject team2panel;
@@ -24,48 +26,30 @@ public class Lobby_Management : MonoBehaviour
     {
         p1.SetActive(false);
         p2.SetActive(false);
-
-     
+        equipos = Equipos.team2;
+        team1panel.SetActive(false);
+        team2panel.SetActive(false);
+        startButton.SetActive(false);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (teamChosed && Input.GetKeyDown(KeyCode.Return))
-        //{
-        //    SceneManager.LoadScene(1);
-        //}
-        if (PlayerConected==2)
+
+        if (PlayerConected == 2)
         {
             p2.SetActive(true);
+            
             //activar joystic izqyuierdo, si se mueve una vez team= true, si se mueve otra vez q sea false y asi sucesivamente
             GestionarInputJugador1();
             GestionarLogicaEquipos();
         }
-        if (PlayerConected==1) { p1.SetActive(true);  }
-        //if (team)
-        //{
-        //     equipos = Equipos.team1;
-        //}
-        //else if (!team)
-        //{
-        //    equipos = Equipos.team1;
-        //}
-        //    switch (equipos)
-        //    {
-        //        case Equipos.team1:
+        if (PlayerConected == 1)
+        {
+            p1.SetActive(true);
+        }
 
-        //        //Asignar equipo 1
-        //        teamChosed=true;
-        //            break;
-        //        case Equipos.team2:
-        //        //Asignar equipo 2
-        //        teamChosed = true;
-
-        //        break;
-
-        //    }
     }
     void GestionarInputJugador1()
     {
@@ -81,6 +65,7 @@ public class Lobby_Management : MonoBehaviour
             team = false;
             team1panel.SetActive(true);
             team2panel.SetActive(false);
+            startButton.SetActive(true);
         }
         // Si mueve a la DERECHA ->
         else if (movimiento.x > 0.5f)
@@ -88,13 +73,14 @@ public class Lobby_Management : MonoBehaviour
             team = true;
             team1panel.SetActive(false);
             team2panel.SetActive(true);
+            startButton.SetActive(true);
         }
 
         // 3. Detectar botón para Iniciar (Botón Sur / A / X)
         // Usamos la acción "Jump" 
         if (inputP1.actions["Jump"].WasPressedThisFrame())
         {
-            if (teamChosed)
+            if (teamChosed && (teamChosed && (team1panel.activeSelf || team2panel.activeSelf)))
             {
                 EmpezarJuego();
             }
@@ -107,7 +93,7 @@ public class Lobby_Management : MonoBehaviour
         {
             equipos = Equipos.team1;
         }
-        else 
+        else
         {
             equipos = Equipos.team2;
         }
