@@ -17,6 +17,7 @@ public class ControladorJugador : MonoBehaviour
     public bool isGrounded;
     public float distanciaRayo = 1.1f; 
     public LayerMask capaSuelo;
+     
 
     void Awake()
     {
@@ -35,7 +36,8 @@ public class ControladorJugador : MonoBehaviour
 
     public void PonerseTrajeGordo()
     {
-        if (modeloGordo) modeloGordo.SetActive(true);
+      
+        if (modeloGordo) modeloGordo.SetActive(true); GetComponent<Gordo_Controller>().enabled=false;
         if (modeloFlaco) modeloFlaco.SetActive(false);
     }
 
