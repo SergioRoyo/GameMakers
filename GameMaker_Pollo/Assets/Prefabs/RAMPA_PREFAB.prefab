@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8626139410563313197}
   - component: {fileID: 7160288274186494862}
-  - component: {fileID: 9108296024929901078}
   m_Layer: 0
   m_Name: RAMPA_PREFAB
   m_TagString: Untagged
@@ -161,25 +160,9 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 5, y: 5, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9108296024929901078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7239858117416195928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2ca55de83816b54b8294cb49920851b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RampaPrefab
-  isActive: 0
-  rampaVisual: {fileID: 1760654478461613417}
-  activationTime: 1
-  activationButton: Habilidad1

@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: -1200320117897512950}
   - component: {fileID: -3913595889844097268}
   - component: {fileID: 7628127632545064759}
+  - component: {fileID: 7075317248745125064}
   m_Layer: 0
   m_Name: 2Players
   m_TagString: Player
@@ -199,6 +200,20 @@ MonoBehaviour:
   chickenGoal: {fileID: 0}
   pollo: {fileID: 0}
   timeCaidaPollo: 2
+--- !u!114 &7075317248745125064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021747282914653060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f7202b763579b4d8994a6a86574bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FLACO_CONTROLLER
+  rampaVisual: {fileID: 0}
+  rampaSwitch: 0
 --- !u!1 &3834338270325913206
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gordo_Base_Mats
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ca68e418010212945986bc8bca209cac, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -426,6 +445,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 922c0ca65b92c5c4cab5cc20e482a1aa, type: 3}
       propertyPath: m_Name
       value: Flaco_Base_Mats
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 922c0ca65b92c5c4cab5cc20e482a1aa, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

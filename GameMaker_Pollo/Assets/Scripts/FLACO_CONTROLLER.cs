@@ -2,73 +2,39 @@ using UnityEngine;
 
 public class FLACO_CONTROLLER : MonoBehaviour
 {
-    [Header("Movement Settings")]
-    public float moveSpeed = 5f;
-    public float jumpForce = 10f;
-
-    [Header("Ability Settings")]
-    public string abilityButton = "Habilidad1"; // Nombre del botón en Input Manager
-
-    private Rigidbody rb;
-    private bool isGrounded;
+    [SerializeField] public GameObject rampaVisual;
+    public bool rampaSwitch;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rampaSwitch = false;
+        
     }
 
-    void Update()
+    void OnTriggerEnter(Collider other)
     {
-        HandleMovement();
-        HandleAbility();
-    }
-
-    void HandleMovement()
-    {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(horizontal, 0, vertical) * moveSpeed * Time.deltaTime;
-        transform.Translate(movement);
-    }
-
-    void HandleAbility()
-    {
-        if (Input.GetButtonDown(abilityButton))
+        if (other.CompareTag("Rampa"))
         {
-            CheckNearbyRampas();
+        rampaSwitch=true;
+            rampaVisual = other.transform.GetChild(0).gameObject;
+            
         }
+
     }
-
-    void CheckNearbyRampas()
+    private void OnTriggerExit(Collider other)
     {
-        // Buscar rampas cercanas
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3f);
-
-        foreach (Collider hit in hitColliders)
+        if (other.CompareTag("Rampa"))
         {
-            RampaPrefab rampa = hit.GetComponent<RampaPrefab>();
-            if (rampa != null && !rampa.GetIsActive())
-            {
-                rampa.ActivarRampa();
-                break; // Activar solo la primera rampa cercana
-            }
+            other.transform.GetChild(0).gameObject.SetActive(false);
+            rampaSwitch = false;
         }
+        
     }
-
-    void OnCollisionEnter(Collision collision)
+    private void OnHabilidad1()
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (rampaSwitch)
         {
-            isGrounded = true;
-        }
-    }
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
+            rampaVisual.SetActive(true);
         }
     }
 }
