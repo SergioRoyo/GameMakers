@@ -181,5 +181,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RampaPrefab
   isActive: 0
   rampaVisual: {fileID: 1760654478461613417}
-  activationTime: 0
+  activationTime: 1
   activationButton: Habilidad1
