@@ -37,6 +37,7 @@ public class ControladorJugador : MonoBehaviour
     public void PonerseTrajeGordo()
     {
         GetComponent<Gordo_Controller>().enabled = true;
+        GetComponent<FLACO_CONTROLLER>().enabled = false;
 
         if (modeloGordo) modeloGordo.SetActive(true); 
         if (modeloFlaco) modeloFlaco.SetActive(false); 
@@ -45,6 +46,7 @@ public class ControladorJugador : MonoBehaviour
     public void PonerseTrajeFlaco()
     {
         GetComponent<Gordo_Controller>().enabled = false;
+        GetComponent<FLACO_CONTROLLER>().enabled = true;
         if (modeloGordo) modeloGordo.SetActive(false); 
         if (modeloFlaco) modeloFlaco.SetActive(true);
     }

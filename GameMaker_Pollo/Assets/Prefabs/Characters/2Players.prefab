@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: -3913595889844097268}
   - component: {fileID: 7628127632545064759}
   - component: {fileID: 5355444842473815118}
+  - component: {fileID: 3104305972936004950}
   m_Layer: 0
   m_Name: 2Players
   m_TagString: Player
@@ -219,6 +220,20 @@ MonoBehaviour:
   rodandoTime: 0.5
   habilidad2: {fileID: 0}
   stayHabilidad2: 0
+--- !u!114 &3104305972936004950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021747282914653060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f7202b763579b4d8994a6a86574bd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FLACO_CONTROLLER
+  rampaVisual: {fileID: 0}
+  rampaSwitch: 0
 --- !u!1 &3834338270325913206
 GameObject:
   m_ObjectHideFlags: 0
