@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Pollo
   - TOXIC
-  - RAMP
+  - Suelo
   layers:
   - Default
   - TransparentFX
@@ -14,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - capaSuelo
   - 
   - 
   - 

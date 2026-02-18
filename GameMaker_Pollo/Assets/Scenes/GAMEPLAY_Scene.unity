@@ -873,7 +873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &219337840
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2265,6 +2265,10 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   velocidadGiro: 720
+  distanciaRayo: 1.1
+  capaSuelo:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!136 &817320041
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4014,6 +4018,14 @@ PrefabInstance:
     - target: {fileID: 5148817236446094103, guid: f26fece2bef357a41b5e236a257d006a, type: 3}
       propertyPath: m_Name
       value: Carretera
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148817236446094103, guid: f26fece2bef357a41b5e236a257d006a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148817236446094103, guid: f26fece2bef357a41b5e236a257d006a, type: 3}
+      propertyPath: m_TagString
+      value: Suelo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
