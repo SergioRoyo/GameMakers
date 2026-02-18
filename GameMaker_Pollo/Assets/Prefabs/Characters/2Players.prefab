@@ -45,7 +45,6 @@ GameObject:
   - component: {fileID: -1200320117897512950}
   - component: {fileID: -3913595889844097268}
   - component: {fileID: 7628127632545064759}
-  - component: {fileID: 555369447865159999}
   m_Layer: 0
   m_Name: 2Players
   m_TagString: Player
@@ -88,6 +87,11 @@ MonoBehaviour:
   speed: 5
   jumpForce: 5
   velocidadGiro: 720
+  isGrounded: 0
+  distanciaRayo: 1.1
+  capaSuelo:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &-3668468891802940170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +131,7 @@ Rigidbody:
   m_GameObject: {fileID: 3021747282914653060}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -152,7 +156,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3021747282914653060}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da0a176c7257fe04f9bde025d86ab946, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -195,23 +199,6 @@ MonoBehaviour:
   chickenGoal: {fileID: 0}
   pollo: {fileID: 0}
   timeCaidaPollo: 2
---- !u!114 &555369447865159999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3021747282914653060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe3527d88f3c80f41bd9cfbe635fe5fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gordo_Controller
-  controladorJugador: {fileID: 8794860839674857864}
-  speedMultiply: 2
-  resetSpeed: 5
-  rodando: 1
-  rodandoTime: 0.5
 --- !u!1 &3834338270325913206
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,6 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1215626725757537912}
+  - component: {fileID: 8128490403961756154}
   m_Layer: 0
   m_Name: Gordo
   m_TagString: Untagged
@@ -244,6 +232,23 @@ Transform:
   - {fileID: 577572793768686896}
   m_Father: {fileID: 7293691165628462448}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8128490403961756154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834338270325913206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe3527d88f3c80f41bd9cfbe635fe5fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gordo_Controller
+  controladorJugador: {fileID: 8794860839674857864}
+  speedMultiply: 2
+  resetSpeed: 5
+  rodando: 1
+  rodandoTime: 0.5
 --- !u!1 &5923608851770322087
 GameObject:
   m_ObjectHideFlags: 0

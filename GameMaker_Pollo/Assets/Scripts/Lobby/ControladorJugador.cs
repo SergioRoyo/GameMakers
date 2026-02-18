@@ -8,12 +8,15 @@ public class ControladorJugador : MonoBehaviour
     public GameObject modeloFlaco;
 
     public float speed = 5f;
+    
     public float jumpForce = 5f;
     public float velocidadGiro = 720f;
 
     private Rigidbody rb;
     private Vector2 input; 
-    private bool isGrounded;
+    public bool isGrounded;
+    public float distanciaRayo = 1.1f; 
+    public LayerMask capaSuelo;
 
     void Awake()
     {
@@ -49,10 +52,15 @@ public class ControladorJugador : MonoBehaviour
     // Esta función se llama sola cuando pulsas el botón Sur (A/X)
     public void OnJump()
     {
-        if (isGrounded)
+        if (isGrounded && Physics.Raycast(transform.position, Vector3.down, distanciaRayo, capaSuelo))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+        //if (Physics.Raycast(transform.position, Vector3.down, distanciaRayo, capaSuelo))
+        //{
+        //    // Solo si el rayo toca algo que esté en la "capaSuelo", saltamos
+        //    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        //}
     }
 
     // --- FÍSICAS Y MOVIMIENTO ---
