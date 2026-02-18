@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pollo
   - TOXIC
+  - RAMP
   layers:
   - Default
   - TransparentFX
