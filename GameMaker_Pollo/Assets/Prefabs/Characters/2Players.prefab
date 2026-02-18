@@ -84,11 +84,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeloGordo: {fileID: 3834338270325913206}
   modeloFlaco: {fileID: 5923608851770322087}
-  speed: 5
+  speed: 2
   jumpForce: 5
   velocidadGiro: 720
   isGrounded: 0
-  distanciaRayo: 1.1
+  distanciaRayo: 0.3
   capaSuelo:
     serializedVersion: 2
     m_Bits: 64

@@ -21,7 +21,7 @@ public class Gordo_Controller : MonoBehaviour
     }
     public void OnHabilidad1() //Habilidad de rodar
     {
-        if (controladorJugador.isGrounded && Physics.Raycast(transform.position, Vector3.down, controladorJugador.distanciaRayo, controladorJugador.capaSuelo) && rodando)
+        if ( rodando)//controladorJugador.isGrounded && Physics.Raycast(transform.position, Vector3.down, controladorJugador.distanciaRayo, controladorJugador.capaSuelo) &&
         {
             StartCoroutine(Rodar());
         }

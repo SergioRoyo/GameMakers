@@ -26,6 +26,10 @@ public class ControladorJugador : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         
     }
+    private void Update()
+    {
+        Debug.DrawRay(transform.position, Vector3.down * distanciaRayo, Color.red);
+    }
 
     //  LOBBY
 
