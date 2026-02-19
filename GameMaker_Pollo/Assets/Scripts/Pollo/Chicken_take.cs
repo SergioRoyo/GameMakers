@@ -62,14 +62,19 @@ public class Chicken_take : MonoBehaviour
 
     void Update()
     {
-        //If pollo en el aire
-        //{
+       
+        if (aire)
+        {
+
             timer -= Time.deltaTime;
             if(timer <= 0f)
             {
-                // Reset collider
+                Collider col = pollo.GetComponent<Collider>();
+                if (col != null) col.enabled = true;
+                aire = false;
             }
-        //}
+        }
+       
 
         if (chicken_Gravity.sueleando)
         {
@@ -136,10 +141,7 @@ public class Chicken_take : MonoBehaviour
         pollo.transform.position = transform.position + transform.forward * 0.5f;
 
         Rigidbody rb = pollo.GetComponent<Rigidbody>();
-        Collider col = pollo.GetComponent<Collider>();
-
-        if (col != null) col.enabled = true;
-
+            
         if (rb != null)
         {
             rb.isKinematic = false;
