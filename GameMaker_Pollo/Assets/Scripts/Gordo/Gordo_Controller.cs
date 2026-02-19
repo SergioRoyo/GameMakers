@@ -11,6 +11,7 @@ public class Gordo_Controller : MonoBehaviour
     public GameObject habilidad2;
     public bool stayHabilidad2 = false;
     public GameObject gordoTraje;
+    bool coolDown = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,9 +27,14 @@ public class Gordo_Controller : MonoBehaviour
     public void OnHabilidad1() //Habilidad de rodar
     {
         if (!enabled) return;
-        if (controladorJugador.isGrounded && Physics.Raycast(transform.position, Vector3.down, controladorJugador.distanciaRayo, controladorJugador.capaSuelo) && rodando)
+        if (coolDown)
         {
-            StartCoroutine(Rodar());
+            StartCoroutine(DashCoolDown());
+            if (controladorJugador.isGrounded && Physics.Raycast(transform.position, Vector3.down, controladorJugador.distanciaRayo, controladorJugador.capaSuelo) && rodando)
+            {
+                StartCoroutine(Rodar());
+            }
+
         }
 
     }
@@ -70,5 +76,11 @@ public class Gordo_Controller : MonoBehaviour
             gordoTraje.SetActive(true);
 
         }
+    }
+    IEnumerator DashCoolDown()
+    {
+        coolDown = false;
+        yield return new WaitForSeconds(3);
+        coolDown = true;
     }
 }
