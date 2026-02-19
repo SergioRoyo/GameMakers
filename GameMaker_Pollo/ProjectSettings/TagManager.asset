@@ -14,6 +14,7 @@ TagManager:
   - Vidas2
   - Bengalas_Controller
   - Bengala
+  - PUENTE
   layers:
   - Default
   - TransparentFX

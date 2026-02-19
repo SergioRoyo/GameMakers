@@ -7,14 +7,19 @@ public class FLACO_CONTROLLER : MonoBehaviour
     public bool rampaSwitch;
     public ControladorJugador controladorJugador;
     public float H2gordoForce= 20;
+    public PhysicsMaterial noFriction;
+    public PhysicsMaterial fullFriction;
+    CapsuleCollider col;
     void Start()
     {
         rampaSwitch = false;
         controladorJugador = GetComponent<ControladorJugador>();
+        col =  GetComponent<CapsuleCollider>();
     }
 
     void OnTriggerEnter(Collider other)
     {
+        col.material = fullFriction;
         if (!enabled) return;
 
         if (other.CompareTag("Rampa"))
@@ -30,6 +35,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        col.material = noFriction;
         if (!enabled) return;
 
         if (other.CompareTag("Rampa"))
