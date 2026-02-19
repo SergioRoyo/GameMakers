@@ -149,40 +149,12 @@ public class Chicken_take : MonoBehaviour
             aire = true;
         }
 
-        //StartCoroutine(EsperarAterrizaje());
-
         Tiempo = 0;
         Colores = 0;
 
         timer = timeToResetCollider;
     }
-    //IEnumerator EsperarAterrizaje()
-    //{
-
-    //    yield return new WaitForSeconds(timeCaidaPollo);
-
-
-    //    Rigidbody rb = pollo.GetComponent<Rigidbody>();
-    //    while (rb != null && Mathf.Abs(rb.linearVelocity.y) > 0.05f)
-    //    {
-    //        yield return null;
-    //    }
-
-    //    if (pollo != null && !estaCargando)
-    //    {
-
-    //        rb.isKinematic = true;
-
-
-    //        polloagent.enabled = true;
-
-
-    //        //polloagent.Warp(pollo.transform.position);
-
-
-    //        polloagent.SetDestination(chickenGoal.transform.position);
-    //    }
-    //}
+   
 
     void ReactivarNavMesh()
     {
