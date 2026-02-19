@@ -4,24 +4,32 @@ using UnityEngine;
 public class FLACO_CONTROLLER : MonoBehaviour
 {
     [SerializeField] public GameObject rampaVisual;
+    [SerializeField] public GameObject rampaGhost;
     public bool rampaSwitch;
     public ControladorJugador controladorJugador;
     public float H2gordoForce= 20;
+    public PhysicsMaterial noFriction;
+    public PhysicsMaterial fullFriction;
+    CapsuleCollider col;
     void Start()
     {
         rampaSwitch = false;
         controladorJugador = GetComponent<ControladorJugador>();
+        col =  GetComponent<CapsuleCollider>();
     }
 
     void OnTriggerEnter(Collider other)
     {
+        col.material = fullFriction;
+        rampaGhost = other.transform.GetChild(1).gameObject;
+        rampaGhost.SetActive(true);
+
         if (!enabled) return;
 
         if (other.CompareTag("Rampa"))
         {
         rampaSwitch=true;
             rampaVisual = other.transform.GetChild(0).gameObject;
-            
         }
         if (other.CompareTag("H2Gordo"))
         {
@@ -30,6 +38,8 @@ public class FLACO_CONTROLLER : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        rampaGhost.SetActive(false);
+        col.material = noFriction;
         if (!enabled) return;
 
         if (other.CompareTag("Rampa"))
@@ -46,6 +56,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
         if (rampaSwitch)
         {
             rampaVisual.SetActive(true);
+            rampaGhost.SetActive(false);
         }
     }
 }
