@@ -236,9 +236,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FLACO_CONTROLLER
   rampaVisual: {fileID: 0}
+  rampaGhost: {fileID: 0}
   rampaSwitch: 0
   controladorJugador: {fileID: 0}
   H2gordoForce: 20
+  noFriction: {fileID: 0}
+  fullFriction: {fileID: 0}
+  flacoTraje: {fileID: 8591570646431317857}
 --- !u!114 &8278020740983384944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,6 +481,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 922c0ca65b92c5c4cab5cc20e482a1aa, type: 3}
+--- !u!1 &8591570646431317857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 922c0ca65b92c5c4cab5cc20e482a1aa, type: 3}
+  m_PrefabInstance: {fileID: 8933463988482277936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8966864044363769307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 922c0ca65b92c5c4cab5cc20e482a1aa, type: 3}
