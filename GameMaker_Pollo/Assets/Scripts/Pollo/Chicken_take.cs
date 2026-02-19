@@ -29,12 +29,12 @@ public class Chicken_take : MonoBehaviour
     void Start()
     {
         if (polloagent != null)
-            polloagent.destination = chickenGoal.transform.position;
+            polloagent.destination = chickenGoal.transform.position; // le da destino al navmesh del pollo
     }
 
     private void OnEnable()
     {
-        SceneManager.sceneLoaded += BusquedaDeObjetos;
+        SceneManager.sceneLoaded += BusquedaDeObjetos; //evento
     }
     private void OnDisable()
     {
@@ -44,7 +44,7 @@ public class Chicken_take : MonoBehaviour
     {
         if (scene.name== "GAMEPLAY_Scene")
         {
-            //pollo= GameObject.Find ("Pollo");
+            //agregamos quien es el pollo por codigo, el destino del naavmesh
             pollo= GameObject.FindGameObjectWithTag("Pollo");
             polloagent= pollo.transform.GetComponent<NavMeshAgent>();
             chickenGoal = GameObject.FindGameObjectWithTag("TOXIC");
@@ -58,16 +58,16 @@ public class Chicken_take : MonoBehaviour
     }
     public void OnTake()
     {
-        if (estaCargando)
+        if (estaCargando)// si tienes el pollo llama a la funcion de lanzar el pollo
         {
             DropChicken();
         }
-        else if (objetoCerca != null)
+        else if (objetoCerca != null)// si el objeto cerca es el pollo
         {
-            bool esDiferenteJugador = ultimoDueno != gameObject;
-            bool tiempoCumplido = Time.time > tiempoUltimoDrop + esperaParaRecoger;
+            bool esDiferenteJugador = ultimoDueno != gameObject; //se detecta si es el ultimo jugador que cogio el pollo
+            bool tiempoCumplido = Time.time > tiempoUltimoDrop + esperaParaRecoger; // se mira si se cumple el tiempo de cooldown
 
-            if (esDiferenteJugador && tiempoCumplido)
+            if (esDiferenteJugador && tiempoCumplido) //si se cumplen, coges el pollo
             {
                 TakeChicken();
             }
@@ -78,7 +78,7 @@ public class Chicken_take : MonoBehaviour
     {
         estaCargando = true;
 
-        polloagent.enabled = false;
+        polloagent.enabled = false;//  se desactiva el navmeshpara que el pollo no se mueva ni tenga un destino
 
        
         pollo.transform.SetParent(manos);
@@ -100,13 +100,14 @@ public class Chicken_take : MonoBehaviour
         if (!estaCargando) return;
 
         estaCargando = false;
-        StopAllCoroutines();
+        StopAllCoroutines(); // terminamos las corrutinas de cambio nde color y de cuenta atras de soltar al pollo
+        pollo.GetComponent<Renderer>().material.color = Listacolores[0];
 
-        ultimoDueno = gameObject;
-        tiempoUltimoDrop = Time.time;
+        ultimoDueno = gameObject; //asignamos que este jugador es el ultimoo dueño del pollo
+        tiempoUltimoDrop = Time.time; //asignamos el tiempo
 
-        pollo.transform.SetParent(null);
-        pollo.transform.position = transform.position + transform.forward * 1.5f;
+        pollo.transform.SetParent(null); //desemparentamos al pollo para que ya no este en las manos del personaje
+        pollo.transform.position = transform.position + transform.forward * 0.5f;
 
         Rigidbody rb = pollo.GetComponent<Rigidbody>();
         Collider col = pollo.GetComponent<Collider>();
@@ -116,7 +117,7 @@ public class Chicken_take : MonoBehaviour
         if (rb != null)
         {
             rb.isKinematic = false;
-            rb.AddForce((Vector3.up*.6f + transform.forward * 0.2f) * fuerzaLanzamiento, ForceMode.Impulse);
+            rb.AddForce((Vector3.up*.7f + transform.forward * 0.05f) * fuerzaLanzamiento, ForceMode.Impulse);
         }
 
         StartCoroutine(EsperarAterrizaje());

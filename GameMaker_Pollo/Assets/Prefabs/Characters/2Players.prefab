@@ -87,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeloGordo: {fileID: 3834338270325913206}
   modeloFlaco: {fileID: 5923608851770322087}
-  speed: 2
+  speed: 3
   jumpForce: 5
   velocidadGiro: 720
   rb: {fileID: 0}
@@ -216,8 +216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gordo_Controller
   controladorJugador: {fileID: 8794860839674857864}
-  speedMultiply: 4
-  resetSpeed: 2
+  speedMultiply: 2.8
+  resetSpeed: 3
   rodando: 1
   rodandoTime: 0.5
   habilidad2: {fileID: 0}
@@ -256,7 +256,6 @@ MonoBehaviour:
   muerto: 0
   bengala: {fileID: 5319709690427778507, guid: e879a81dad0f1294a8f7ed4ace5e1ed0, type: 3}
   manos: {fileID: 8213789733133125483}
-  controladorJugador: {fileID: 0}
   rb: {fileID: 6973422274064361433, guid: e879a81dad0f1294a8f7ed4ace5e1ed0, type: 3}
 --- !u!1 &3834338270325913206
 GameObject:

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6076080365063533213}
   - component: {fileID: 5112754096323649979}
   - component: {fileID: 6326999021973231336}
+  - component: {fileID: 5391047882676473761}
   m_Layer: 0
   m_Name: pollo
   m_TagString: Pollo
@@ -161,7 +162,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -236,3 +237,16 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5391047882676473761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274430475747641231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13dc5facdaf60046bb2822d25d19a93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chicken_gravity
+  gravity: -10
