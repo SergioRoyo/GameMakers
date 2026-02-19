@@ -214,12 +214,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gordo_Controller
   controladorJugador: {fileID: 8794860839674857864}
-  speedMultiply: 2
-  resetSpeed: 5
+  speedMultiply: 4
+  resetSpeed: 2
   rodando: 1
   rodandoTime: 0.5
   habilidad2: {fileID: 0}
   stayHabilidad2: 0
+  gordoTraje: {fileID: 236478330091827082}
 --- !u!114 &3104305972936004950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +372,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca68e418010212945986bc8bca209cac, type: 3}
+--- !u!1 &236478330091827082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ca68e418010212945986bc8bca209cac, type: 3}
+  m_PrefabInstance: {fileID: 1119507450026676955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &577572793768686896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ca68e418010212945986bc8bca209cac, type: 3}

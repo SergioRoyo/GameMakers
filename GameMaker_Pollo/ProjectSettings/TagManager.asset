@@ -8,6 +8,8 @@ TagManager:
   - TOXIC
   - Suelo
   - Rampa
+  - Habilidad2
+  - H2Gordo
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class ControladorJugador : MonoBehaviour
     public float jumpForce = 5f;
     public float velocidadGiro = 720f;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     private Vector2 input; 
     public bool isGrounded;
     public float distanciaRayo = 1.1f; 
