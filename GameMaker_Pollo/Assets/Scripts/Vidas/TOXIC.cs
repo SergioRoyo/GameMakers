@@ -58,7 +58,7 @@ public class TOXIC : MonoBehaviour
             }
             if (revivirController.vidasCount < 0)
             {
-                foreach (GameObject player in RailCameraDriver.Instance.players)
+                foreach (GameObject player in CameraFollow2.Instance.players)
                 {
                     Destroy(player);
                 }
@@ -70,7 +70,7 @@ public class TOXIC : MonoBehaviour
         if (other.CompareTag("Pollo"))
         {
 
-            foreach (GameObject player in RailCameraDriver.Instance.players)
+            foreach (GameObject player in CameraFollow2.Instance.players)
             {
                 Destroy(player);
             }

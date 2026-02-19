@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -10,7 +11,7 @@ public class Chicken_take : MonoBehaviour
     public float esperaParaRecoger = 2f;
 
     private GameObject objetoCerca; // El pollo que detecta el trigger
-    private bool estaCargando = false;
+    public bool estaCargando = false;
 
     private static GameObject ultimoDueno;
     private static float tiempoUltimoDrop;
@@ -24,10 +25,16 @@ public class Chicken_take : MonoBehaviour
     public GameObject pollo;
 
     public float timeCaidaPollo = 2f;
+    public Chicken_gravity chicken_Gravity;
+
+    public float timeToResetCollider = 2f;
+    private float timer = 0f;
+    public bool aire=false;
     //public KeyCode teclaInteractuar = KeyCode.E;
 
     void Start()
     {
+        aire = false;
         if (polloagent != null)
             polloagent.destination = chickenGoal.transform.position; // le da destino al navmesh del pollo
     }
@@ -42,11 +49,12 @@ public class Chicken_take : MonoBehaviour
     }
     void BusquedaDeObjetos(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name== "GAMEPLAY_Scene")
+        if (scene.name == "GAMEPLAY_Scene")
         {
             //agregamos quien es el pollo por codigo, el destino del naavmesh
-            pollo= GameObject.FindGameObjectWithTag("Pollo");
-            polloagent= pollo.transform.GetComponent<NavMeshAgent>();
+            pollo = GameObject.FindGameObjectWithTag("Pollo");
+            polloagent = pollo.transform.GetComponent<NavMeshAgent>();
+            chicken_Gravity = pollo.GetComponent<Chicken_gravity>();
             chickenGoal = GameObject.FindGameObjectWithTag("TOXIC");
             polloagent.destination = chickenGoal.transform.position;
         }
@@ -54,7 +62,22 @@ public class Chicken_take : MonoBehaviour
 
     void Update()
     {
-      
+        //If pollo en el aire
+        //{
+            timer -= Time.deltaTime;
+            if(timer <= 0f)
+            {
+                // Reset collider
+            }
+        //}
+
+        if (chicken_Gravity.sueleando)
+        {
+            Rigidbody rb = pollo.GetComponent<Rigidbody>();
+            rb.isKinematic = true;
+            polloagent.enabled = true;
+            polloagent.SetDestination(chickenGoal.transform.position);
+        }
     }
     public void OnTake()
     {
@@ -69,6 +92,8 @@ public class Chicken_take : MonoBehaviour
 
             if (esDiferenteJugador && tiempoCumplido) //si se cumplen, coges el pollo
             {
+
+                StopAllCoroutines();
                 TakeChicken();
             }
         }
@@ -76,11 +101,12 @@ public class Chicken_take : MonoBehaviour
 
     void TakeChicken()
     {
+        chicken_Gravity.sueleando = false;
         estaCargando = true;
 
         polloagent.enabled = false;//  se desactiva el navmeshpara que el pollo no se mueva ni tenga un destino
 
-       
+
         pollo.transform.SetParent(manos);
         pollo.transform.localPosition = Vector3.zero;
         pollo.transform.localRotation = Quaternion.identity;
@@ -117,41 +143,44 @@ public class Chicken_take : MonoBehaviour
         if (rb != null)
         {
             rb.isKinematic = false;
-            rb.AddForce((Vector3.up*.7f + transform.forward * 0.05f) * fuerzaLanzamiento, ForceMode.Impulse);
+            rb.AddForce((Vector3.up * .7f + transform.forward * 0.05f) * fuerzaLanzamiento, ForceMode.Impulse);
+            aire = true;
         }
 
-        StartCoroutine(EsperarAterrizaje());
+        //StartCoroutine(EsperarAterrizaje());
 
         Tiempo = 0;
         Colores = 0;
+
+        timer = timeToResetCollider;
     }
-    IEnumerator EsperarAterrizaje()
-    {
-        
-        yield return new WaitForSeconds(timeCaidaPollo);
+    //IEnumerator EsperarAterrizaje()
+    //{
 
-     
-        Rigidbody rb = pollo.GetComponent<Rigidbody>();
-        while (rb != null && Mathf.Abs(rb.linearVelocity.y) > 0.05f)
-        {
-            yield return null;
-        }
+    //    yield return new WaitForSeconds(timeCaidaPollo);
 
-        if (pollo != null)
-        {
-            
-            rb.isKinematic = true;
 
-          
-            polloagent.enabled = true;
+    //    Rigidbody rb = pollo.GetComponent<Rigidbody>();
+    //    while (rb != null && Mathf.Abs(rb.linearVelocity.y) > 0.05f)
+    //    {
+    //        yield return null;
+    //    }
 
-            
-            polloagent.Warp(pollo.transform.position);
+    //    if (pollo != null && !estaCargando)
+    //    {
 
-         
-            polloagent.SetDestination(chickenGoal.transform.position);
-        }
-    }
+    //        rb.isKinematic = true;
+
+
+    //        polloagent.enabled = true;
+
+
+    //        //polloagent.Warp(pollo.transform.position);
+
+
+    //        polloagent.SetDestination(chickenGoal.transform.position);
+    //    }
+    //}
 
     void ReactivarNavMesh()
     {
@@ -159,7 +188,7 @@ public class Chicken_take : MonoBehaviour
         polloagent.destination = chickenGoal.transform.position;
     }
 
-   
+
     private void OnTriggerStay(Collider other)
     {
         if (!estaCargando && other.CompareTag("Pollo"))
@@ -172,7 +201,7 @@ public class Chicken_take : MonoBehaviour
             objetoCerca = null;
     }
 
-   
+
     IEnumerator changeColor()
     {
         yield return new WaitForSeconds(1f);

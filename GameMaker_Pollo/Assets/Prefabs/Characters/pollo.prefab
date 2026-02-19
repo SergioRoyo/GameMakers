@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2382443170317231461}
   - component: {fileID: 4390192818716169142}
   - component: {fileID: 2245022994370906440}
-  - component: {fileID: 1800934160520594777}
+  - component: {fileID: 8769337461788388284}
   - component: {fileID: 7300848089263641292}
   - component: {fileID: 4472631364459358353}
   - component: {fileID: 212174852158036231}
@@ -98,7 +98,7 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1800934160520594777
+--- !u!135 &8769337461788388284
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.58
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &7300848089263641292
 SphereCollider:
@@ -250,3 +250,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chicken_gravity
   gravity: -10
+  sueleando: 0

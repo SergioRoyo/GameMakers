@@ -2321,6 +2321,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1800934160520594777, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2382443170317231461, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.29
@@ -2582,11 +2586,6 @@ BoxCollider:
 --- !u!1 &817320036 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 922c0ca65b92c5c4cab5cc20e482a1aa, type: 3}
-  m_PrefabInstance: {fileID: 2127065578}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &817320039 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 922c0ca65b92c5c4cab5cc20e482a1aa, type: 3}
   m_PrefabInstance: {fileID: 2127065578}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &817320040
@@ -4105,7 +4104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1307743779}
   - component: {fileID: 1307743778}
-  - component: {fileID: 1307743777}
+  - component: {fileID: 1307743780}
   m_Layer: 0
   m_Name: Dolly Cart
   m_TagString: Untagged
@@ -4113,27 +4112,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1307743777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307743776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e25c37154c2a7742a0b38a9944b019d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  splineCart: {fileID: 1307743778}
-  splinePath: {fileID: 1537660967}
-  players:
-  - {fileID: 817320039}
-  - {fileID: 0}
-  baseSpeed: 0.5
-  boostSpeed: 8
-  acceleration: 4
-  leadThreshold: 7
 --- !u!114 &1307743778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4179,6 +4157,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1307743780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307743776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf1fe90d86849a4ea1cdf8398ef9dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow2
+  splineCart: {fileID: 1307743778}
+  splinePath: {fileID: 1537660967}
+  players:
+  - {fileID: 0}
+  - {fileID: 0}
+  smoothness: 3
 --- !u!4 &1317614587 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 41a537a1aa580854d84d831a9ab3743c, type: 3}
