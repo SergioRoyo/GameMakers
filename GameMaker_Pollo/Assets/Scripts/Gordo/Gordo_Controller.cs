@@ -27,7 +27,7 @@ public class Gordo_Controller : MonoBehaviour
     public void OnHabilidad1() //Habilidad de rodar
     {
         if (!enabled) return;
-        if (coolDown)
+        if (!coolDown)
         {
             StartCoroutine(DashCoolDown());
             if (controladorJugador.isGrounded && Physics.Raycast(transform.position, Vector3.down, controladorJugador.distanciaRayo, controladorJugador.capaSuelo) && rodando)
@@ -79,8 +79,8 @@ public class Gordo_Controller : MonoBehaviour
     }
     IEnumerator DashCoolDown()
     {
-        coolDown = false;
-        yield return new WaitForSeconds(3);
         coolDown = true;
+        yield return new WaitForSeconds(3);
+        coolDown = false;
     }
 }

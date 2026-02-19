@@ -23,12 +23,12 @@ public class FLACO_CONTROLLER : MonoBehaviour
     {
 
         if (!enabled) return;
-        col.material = fullFriction;
-        rampaGhost = other.transform.GetChild(1).gameObject;
-        rampaGhost.SetActive(true);
 
         if (other.CompareTag("Rampa"))
         {
+        col.material = fullFriction;
+        rampaGhost = other.transform.GetChild(1).gameObject;
+        rampaGhost.SetActive(true);
         rampaSwitch=true;
             rampaVisual = other.transform.GetChild(0).gameObject;
         }
@@ -40,12 +40,12 @@ public class FLACO_CONTROLLER : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (!enabled) return;
-        rampaGhost.SetActive(false);
-        col.material = noFriction;
-        flacoTraje.SetActive(true);
 
         if (other.CompareTag("Rampa"))
         {
+        rampaGhost.SetActive(false);
+        col.material = noFriction;
+        flacoTraje.SetActive(true);
             other.transform.GetChild(0).gameObject.SetActive(false);
             rampaSwitch = false;
         }
