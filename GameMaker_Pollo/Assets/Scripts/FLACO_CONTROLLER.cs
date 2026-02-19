@@ -10,6 +10,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
     public float H2gordoForce= 20;
     public PhysicsMaterial noFriction;
     public PhysicsMaterial fullFriction;
+    public GameObject flacoTraje;
     CapsuleCollider col;
     void Start()
     {
@@ -20,11 +21,11 @@ public class FLACO_CONTROLLER : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+
+        if (!enabled) return;
         col.material = fullFriction;
         rampaGhost = other.transform.GetChild(1).gameObject;
         rampaGhost.SetActive(true);
-
-        if (!enabled) return;
 
         if (other.CompareTag("Rampa"))
         {
@@ -38,9 +39,10 @@ public class FLACO_CONTROLLER : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        if (!enabled) return;
         rampaGhost.SetActive(false);
         col.material = noFriction;
-        if (!enabled) return;
+        flacoTraje.SetActive(true);
 
         if (other.CompareTag("Rampa"))
         {
@@ -57,6 +59,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
         {
             rampaVisual.SetActive(true);
             rampaGhost.SetActive(false);
+            flacoTraje.SetActive(false);
         }
     }
 }
