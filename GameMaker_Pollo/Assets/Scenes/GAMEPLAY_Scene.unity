@@ -1056,6 +1056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   revivirController: {fileID: 0}
   revivir: {fileID: 0}
+  player: 0
 --- !u!65 &236375909
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1107,8 +1108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Revivir
   muerto: {fileID: 0}
-  bengala: {fileID: 0}
   revivirTime: 10
+  activo: 0
 --- !u!4 &359168193
 Transform:
   m_ObjectHideFlags: 0
@@ -2318,7 +2319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1274430475747641231, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2382443170317231461, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5281,9 +5282,9 @@ MonoBehaviour:
         z: 14.497761
       Rotation:
         value:
-          x: 0.0000046059718
+          x: 0.000004606012
           y: -0.7030001
-          z: -0.000004677841
+          z: -0.0000046778814
           w: 0.71118975
     - Position:
         x: -68

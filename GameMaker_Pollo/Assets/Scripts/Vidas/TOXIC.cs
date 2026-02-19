@@ -56,16 +56,16 @@ public class TOXIC : MonoBehaviour
                 revivirController.muerto = true;
                 player = 2;
             }
-        }
-        if (revivirController.vidasCount < 0)
-        {
-            foreach (GameObject player in RailCameraDriver.Instance.players)
+            if (revivirController.vidasCount < 0)
             {
-                Destroy(player);
-            }
-            Destroy(GameObject.FindGameObjectWithTag("Pollo"));
-            SceneManager.LoadScene(0);
+                foreach (GameObject player in RailCameraDriver.Instance.players)
+                {
+                    Destroy(player);
+                }
+                Destroy(GameObject.FindGameObjectWithTag("Pollo"));
+                SceneManager.LoadScene(0);
 
+            }
         }
         if (other.CompareTag("Pollo"))
         {

@@ -54,23 +54,7 @@ public class Chicken_take : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetKeyDown(teclaInteractuar))
-        //{
-        //    if (estaCargando)
-        //    {
-        //        DropChicken();
-        //    }
-        //    else if (objetoCerca != null)
-        //    {
-        //        bool esDiferenteJugador = ultimoDueno != gameObject;
-        //        bool tiempoCumplido = Time.time > tiempoUltimoDrop + esperaParaRecoger;
-
-        //        if (esDiferenteJugador && tiempoCumplido)
-        //        {
-        //            TakeChicken();
-        //        }
-        //    }
-        //}
+      
     }
     public void OnTake()
     {
@@ -132,7 +116,7 @@ public class Chicken_take : MonoBehaviour
         if (rb != null)
         {
             rb.isKinematic = false;
-            rb.AddForce((Vector3.up + transform.forward * 0.5f) * fuerzaLanzamiento, ForceMode.Impulse);
+            rb.AddForce((Vector3.up*.6f + transform.forward * 0.2f) * fuerzaLanzamiento, ForceMode.Impulse);
         }
 
         StartCoroutine(EsperarAterrizaje());
