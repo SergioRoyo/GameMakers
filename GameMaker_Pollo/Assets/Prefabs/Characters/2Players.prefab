@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 7628127632545064759}
   - component: {fileID: 5355444842473815118}
   - component: {fileID: 3104305972936004950}
+  - component: {fileID: 8278020740983384944}
   m_Layer: 0
   m_Name: 2Players
   m_TagString: Player
@@ -89,6 +90,7 @@ MonoBehaviour:
   speed: 2
   jumpForce: 5
   velocidadGiro: 720
+  rb: {fileID: 0}
   isGrounded: 0
   distanciaRayo: 0.3
   capaSuelo:
@@ -235,6 +237,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FLACO_CONTROLLER
   rampaVisual: {fileID: 0}
   rampaSwitch: 0
+  controladorJugador: {fileID: 0}
+  H2gordoForce: 20
+--- !u!114 &8278020740983384944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021747282914653060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88da45b961b29b94293466a53188bd90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Revivir_Controller
+  almacenVidas: {fileID: 0}
+  vidasCount: 3
+  muerto: 0
+  bengala: {fileID: 5319709690427778507, guid: e879a81dad0f1294a8f7ed4ace5e1ed0, type: 3}
+  manos: {fileID: 8213789733133125483}
+  controladorJugador: {fileID: 0}
+  rb: {fileID: 6973422274064361433, guid: e879a81dad0f1294a8f7ed4ace5e1ed0, type: 3}
 --- !u!1 &3834338270325913206
 GameObject:
   m_ObjectHideFlags: 0

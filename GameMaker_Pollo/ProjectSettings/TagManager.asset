@@ -10,6 +10,10 @@ TagManager:
   - Rampa
   - Habilidad2
   - H2Gordo
+  - Vidas1
+  - Vidas2
+  - Bengalas_Controller
+  - Bengala
   layers:
   - Default
   - TransparentFX
