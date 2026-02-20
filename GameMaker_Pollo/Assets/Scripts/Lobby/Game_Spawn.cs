@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PuntoDeAparicion : MonoBehaviour
+public class Game_Spawn : MonoBehaviour
 {
     // En el inspector pondrás 1 para el Jugador 1, o 2 para el Jugador 2
     public int numeroDeJugador;

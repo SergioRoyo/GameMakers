@@ -38,6 +38,16 @@ public class TOXIC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (revivirController.vidasCount < 0)
+            {
+                foreach (GameObject player in CameraFollow2.Instance.players)
+                {
+                    Destroy(player);
+                }
+                Destroy(GameObject.FindGameObjectWithTag("Pollo"));
+                SceneManager.LoadScene(0);
+
+            }
             Vector3 cielo = this.gameObject.transform.position + (Vector3.up * 90);
             other.transform.position = cielo;
             if (other.name == "Jugador_1")
@@ -55,16 +65,6 @@ public class TOXIC : MonoBehaviour
                 revivirController.vidasCount--;
                 revivirController.muerto = true;
                 player = 2;
-            }
-            if (revivirController.vidasCount < 0)
-            {
-                foreach (GameObject player in CameraFollow2.Instance.players)
-                {
-                    Destroy(player);
-                }
-                Destroy(GameObject.FindGameObjectWithTag("Pollo"));
-                SceneManager.LoadScene(0);
-
             }
         }
         if (other.CompareTag("Pollo"))
