@@ -90,7 +90,7 @@ public class Chicken_take : MonoBehaviour
         {
             DropChicken();
         }
-        else if (objetoCerca != null)// si el objeto cerca es el pollo
+        else if (!estaCargando && objetoCerca != null)// si el objeto cerca es el pollo
         {
             bool esDiferenteJugador = ultimoDueno != gameObject; //se detecta si es el ultimo jugador que cogio el pollo
             bool tiempoCumplido = Time.time > tiempoUltimoDrop + esperaParaRecoger; // se mira si se cumple el tiempo de cooldown
