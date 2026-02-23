@@ -145,7 +145,7 @@ public class Chicken_take : MonoBehaviour
         if (rb != null)
         {
             rb.isKinematic = false;
-            rb.AddForce((Vector3.up * .7f + transform.forward * 0.05f) * fuerzaLanzamiento, ForceMode.Impulse);
+            rb.AddForce((Vector3.up * .55f + transform.forward * 0.1f) * fuerzaLanzamiento, ForceMode.Impulse);
             aire = true;
         }
 
