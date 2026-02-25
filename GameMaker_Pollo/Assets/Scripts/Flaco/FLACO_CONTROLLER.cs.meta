@@ -1,2 +1,18 @@
 fileFormatVersion: 2
 guid: 33f7202b763579b4d8994a6a86574bd1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rampaVisual: {instanceID: 0}
+  - rampaGhost: {instanceID: 0}
+  - controladorJugador: {instanceID: 0}
+  - noFriction: {instanceID: 0}
+  - fullFriction: {instanceID: 0}
+  - flacoTraje: {instanceID: 0}
+  - visualCoolDown: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

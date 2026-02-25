@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +13,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
     public PhysicsMaterial noFriction;
     public PhysicsMaterial fullFriction;
     public GameObject flacoTraje;
+    public GameObject flacoTrajeScaled;
     CapsuleCollider col;
     public float scaleTime = 3f;
     public bool scaling = false;
@@ -52,19 +52,18 @@ public class FLACO_CONTROLLER : MonoBehaviour
     {
         if (scene.name == "GAMEPLAY_Scene")
         {
-            print("k");
-            print("r");
+           
             if (this.gameObject == GameObject.Find("Jugador_1"))
             {
-                print("s");
+               
                 visualCoolDown = Canvas_Manager.Instance.P1slider;
             }
             else if (this.gameObject == GameObject.Find("Jugador_2"))
             {
-                print("g");
+               
                 visualCoolDown = Canvas_Manager.Instance.P2slider;
             }
-            print("f");
+           
             visualCoolDown.maxValue = CoolTime;
             visualCoolDown.minValue = 0;
             visualCoolDown.value = 0;
@@ -120,12 +119,9 @@ public class FLACO_CONTROLLER : MonoBehaviour
         if (!enabled) return;
         if (!sCoolDown)
         {
-            StartCoroutine(ScaleCoolDown());
 
             if (!scaling)
             {
-                CoolTimer = 0;
-                visualCoolDown.value = 0;
                 StartCoroutine(Scale());
             }
         }
@@ -134,10 +130,29 @@ public class FLACO_CONTROLLER : MonoBehaviour
     IEnumerator Scale()
     {
         scaling = true;
-        this.gameObject.transform.localScale = scaleY;
+        flacoTraje.SetActive(false);
+        flacoTrajeScaled.SetActive(true);
+
+        controladorJugador.colliderPersonaje.radius = 0.2028357f;
+        controladorJugador.colliderPersonaje.height = 2.522687f;
+        controladorJugador.colliderPersonaje.center = new Vector3(0, 1.072925f, 0.05180952f);
+
+        controladorJugador.manosFlaco.transform.localPosition = new Vector3 (0.106f, 1.885f, 0.656f);
+
         yield return new WaitForSeconds(scaleTime);
-        this.gameObject.transform.localScale = new Vector3(1, 1, 1);
+
+        controladorJugador.colliderPersonaje.radius = 0.2028357f;
+        controladorJugador.colliderPersonaje.height = 1.900662f;
+        controladorJugador.colliderPersonaje.center = new Vector3(0, 0.7619121f, 0);
+
+        controladorJugador.manosFlaco.transform.localPosition = new Vector3(0.106f, 1.391f, 0.656f);
+
+        flacoTraje.SetActive(true);
+        flacoTrajeScaled.SetActive(false);
         scaling = false;
+                CoolTimer = 0;
+                visualCoolDown.value = 0;
+            StartCoroutine(ScaleCoolDown());
     }
     IEnumerator ScaleCoolDown()
     {

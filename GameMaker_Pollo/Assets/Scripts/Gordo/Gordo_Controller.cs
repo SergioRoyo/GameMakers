@@ -77,11 +77,12 @@ public class Gordo_Controller : MonoBehaviour
         if (!enabled) return;
         if (!coolDown)
         {
-            StartCoroutine(DashCoolDown());
+           
             if (controladorJugador.isGrounded && Physics.Raycast(transform.position, Vector3.down, controladorJugador.distanciaRayo, controladorJugador.capaSuelo) && canRodar)
             {
-                CoolTimer = 0;
-                visualCoolDown.value = 0;
+                controladorJugador.colliderPersonaje.radius = 0.3342683f;
+                controladorJugador.colliderPersonaje.height = 0.9376385f;
+                controladorJugador.colliderPersonaje.center = new Vector3(0, 0.2804004f, 0.05180952f);
                 StartCoroutine(Rodar());
             }
 
@@ -90,12 +91,17 @@ public class Gordo_Controller : MonoBehaviour
     }
     public IEnumerator Rodar()
     {
-
         canRodar = false;
         controladorJugador.speed = controladorJugador.speed * speedMultiply;
         yield return new WaitForSeconds(rodandoTime);
         controladorJugador.speed = resetSpeed;
         canRodar = true;
+        controladorJugador.colliderPersonaje.radius = 0.4f;
+        controladorJugador.colliderPersonaje.height = 1.459375f;
+        controladorJugador.colliderPersonaje.center = new Vector3(0, 0.5412684f, 0.05180952f);
+                CoolTimer = 0;
+                visualCoolDown.value = 0;
+        StartCoroutine(DashCoolDown());
     }
     public void OnHabilidad2()
     {

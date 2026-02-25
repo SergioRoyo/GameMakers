@@ -31,6 +31,7 @@ public class ControladorJugador : MonoBehaviour
     public float distanciaRayo = 1.1f;
     public LayerMask capaSuelo;
     public Chicken_take chicken_Take;
+    public CapsuleCollider colliderPersonaje;
 
 
     void Awake()
@@ -62,6 +63,11 @@ public class ControladorJugador : MonoBehaviour
         jumpForce = jumpForceGordo;
         chicken_Take.dropForceForward = dropForceForwardGordo;
         chicken_Take.dropForceUp = dropForceUpGordo;
+
+        colliderPersonaje.radius = 0.4f;
+        colliderPersonaje.height = 1.459375f;
+        colliderPersonaje.center = new Vector3(0, 0.5412684f, 0.05180952f);
+
         if (modeloGordo) modeloGordo.SetActive(true);
         if (modeloFlaco) modeloFlaco.SetActive(false);
     }
@@ -76,6 +82,11 @@ public class ControladorJugador : MonoBehaviour
         jumpForce = jumpForceFlaco;
         chicken_Take.dropForceUp = dropForceUpFlaco;
         chicken_Take.dropForceForward = dropForceForwardFlaco;
+
+        colliderPersonaje.radius = 0.2028357f;
+        colliderPersonaje.height = 1.900662f;
+        colliderPersonaje.center = new Vector3(0, 0.7619121f, 0);
+
         if (modeloGordo) modeloGordo.SetActive(false);
         if (modeloFlaco) modeloFlaco.SetActive(true);
     }

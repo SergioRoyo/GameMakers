@@ -64,6 +64,7 @@ public class Lobby_Management : MonoBehaviour
         PlayerInput inputP1 = listaJugadores[0].GetComponent<PlayerInput>();
 
         // 2. Leemos el Stick Izquierdo (Acción "Move")
+        Debug.Log(inputP1.actions["Move"].ReadValue<Vector2>());   
         Vector2 movimiento = inputP1.actions["Move"].ReadValue<Vector2>();
 
         // Si mueve a la IZQUIERDA <-
