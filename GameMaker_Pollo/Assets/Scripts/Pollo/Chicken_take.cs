@@ -11,7 +11,7 @@ public class Chicken_take : MonoBehaviour
     public float esperaParaRecoger = 2f;
 
     private GameObject objetoCerca; // El pollo que detecta el trigger
-    public bool estaCargando = false;
+    public bool take = false;
 
     private static GameObject ultimoDueno;
     private static float tiempoUltimoDrop;
@@ -35,6 +35,7 @@ public class Chicken_take : MonoBehaviour
     void Start()
     {
         aire = false;
+       
         if (polloagent != null)
             polloagent.destination = chickenGoal.transform.position; // le da destino al navmesh del pollo
     }
@@ -74,7 +75,9 @@ public class Chicken_take : MonoBehaviour
                 aire = false;
             }
         }
-       
+
+        if (pollo != null)
+        {
 
         if (chicken_Gravity.sueleando)
         {
@@ -83,14 +86,15 @@ public class Chicken_take : MonoBehaviour
             polloagent.enabled = true;
             polloagent.SetDestination(chickenGoal.transform.position);
         }
+        }
     }
     public void OnTake()
     {
-        if (estaCargando)// si tienes el pollo llama a la funcion de lanzar el pollo
+        if (take)// si tienes el pollo llama a la funcion de lanzar el pollo
         {
             DropChicken();
         }
-        else if (!estaCargando && objetoCerca != null)// si el objeto cerca es el pollo
+        else if (!take && objetoCerca != null)// si el objeto cerca es el pollo
         {
             bool esDiferenteJugador = ultimoDueno != gameObject; //se detecta si es el ultimo jugador que cogio el pollo
             bool tiempoCumplido = Time.time > tiempoUltimoDrop + esperaParaRecoger; // se mira si se cumple el tiempo de cooldown
@@ -107,7 +111,7 @@ public class Chicken_take : MonoBehaviour
     void TakeChicken()
     {
         chicken_Gravity.sueleando = false;
-        estaCargando = true;
+        take = true;
 
         polloagent.enabled = false;//  se desactiva el navmeshpara que el pollo no se mueva ni tenga un destino
 
@@ -128,9 +132,9 @@ public class Chicken_take : MonoBehaviour
 
     public void DropChicken()
     {
-        if (!estaCargando) return;
+        if (!take) return;
 
-        estaCargando = false;
+        take = false;
         StopAllCoroutines(); // terminamos las corrutinas de cambio nde color y de cuenta atras de soltar al pollo
         pollo.GetComponent<Renderer>().material.color = Listacolores[0];
 
@@ -138,7 +142,7 @@ public class Chicken_take : MonoBehaviour
         tiempoUltimoDrop = Time.time; //asignamos el tiempo
 
         pollo.transform.SetParent(null); //desemparentamos al pollo para que ya no este en las manos del personaje
-        pollo.transform.position = transform.position + transform.forward * 0.5f;
+        pollo.transform.position = transform.position + transform.forward * 0.7f;
 
         Rigidbody rb = pollo.GetComponent<Rigidbody>();
             
@@ -165,13 +169,13 @@ public class Chicken_take : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (!estaCargando && other.CompareTag("Pollo"))
+        if (!take && other.CompareTag("Pollo"))
             objetoCerca = other.gameObject;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (!estaCargando && other.CompareTag("Pollo"))
+        if (!take && other.CompareTag("Pollo"))
             objetoCerca = null;
     }
 

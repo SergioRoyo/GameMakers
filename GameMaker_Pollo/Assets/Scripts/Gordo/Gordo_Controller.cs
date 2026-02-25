@@ -1,37 +1,87 @@
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Gordo_Controller : MonoBehaviour
 {
     public ControladorJugador controladorJugador;
+    public Chicken_take chicken_Take;
     public float speedMultiply = 5f;
     public float resetSpeed = 2f;
-    public bool rodando = true;
+    public bool canRodar = true;
     public float rodandoTime = 3f;
     public GameObject habilidad2;
     public bool stayHabilidad2 = false;
     public GameObject gordoTraje;
     bool coolDown = false;
+
+    public Slider visualCoolDown;
+    public float CoolTimer=0;
+    public float CoolTime=3;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         controladorJugador = GetComponent<ControladorJugador>();
-
+        chicken_Take = GetComponent<Chicken_take>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (coolDown)
+        {
 
+         CoolTimer += Time.deltaTime;
+            visualCoolDown.value = CoolTimer;
+        }
     }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += BusquedaDeObjetos; //evento
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= BusquedaDeObjetos;
+    }
+    void BusquedaDeObjetos(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "GAMEPLAY_Scene")
+        {
+            print("k");
+            print("r");
+            if (this.gameObject == GameObject.Find("Jugador_1"))
+            {
+                print("s");
+                visualCoolDown = Canvas_Manager.Instance.P1slider;
+            }
+            else if (this.gameObject == GameObject.Find("Jugador_2"))
+            {
+                print("g");
+                visualCoolDown = Canvas_Manager.Instance.P2slider;
+            }
+            print("f");
+            visualCoolDown.maxValue = CoolTime;
+            visualCoolDown.minValue = 0;
+            visualCoolDown.value = 0;
+        }
+    }
+
     public void OnHabilidad1() //Habilidad de rodar
     {
         if (!enabled) return;
         if (!coolDown)
         {
             StartCoroutine(DashCoolDown());
-            if (controladorJugador.isGrounded && Physics.Raycast(transform.position, Vector3.down, controladorJugador.distanciaRayo, controladorJugador.capaSuelo) && rodando)
+            if (controladorJugador.isGrounded && Physics.Raycast(transform.position, Vector3.down, controladorJugador.distanciaRayo, controladorJugador.capaSuelo) && canRodar)
             {
+                CoolTimer = 0;
+                visualCoolDown.value = 0;
                 StartCoroutine(Rodar());
             }
 
@@ -41,16 +91,16 @@ public class Gordo_Controller : MonoBehaviour
     public IEnumerator Rodar()
     {
 
-        rodando = false;
+        canRodar = false;
         controladorJugador.speed = controladorJugador.speed * speedMultiply;
         yield return new WaitForSeconds(rodandoTime);
         controladorJugador.speed = resetSpeed;
-        rodando = true;
+        canRodar = true;
     }
     public void OnHabilidad2()
     {
         if (!enabled) return;
-        if (stayHabilidad2)
+        if (!chicken_Take.take && stayHabilidad2)
         {
 
             habilidad2.SetActive(true);
@@ -80,7 +130,7 @@ public class Gordo_Controller : MonoBehaviour
     IEnumerator DashCoolDown()
     {
         coolDown = true;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(CoolTime);
         coolDown = false;
     }
 }

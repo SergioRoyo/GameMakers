@@ -1,0 +1,148 @@
+using System.Collections;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+public class FLACO_CONTROLLER : MonoBehaviour
+{
+    [SerializeField] public GameObject rampaVisual;
+    [SerializeField] public GameObject rampaGhost;
+    public bool rampaSwitch;
+    public ControladorJugador controladorJugador;
+    public float H2gordoForce = 20;
+    public PhysicsMaterial noFriction;
+    public PhysicsMaterial fullFriction;
+    public GameObject flacoTraje;
+    CapsuleCollider col;
+    public float scaleTime = 3f;
+    public bool scaling = false;
+    public Vector3 scaleY = new Vector3(1, 2, 1);
+    public bool sCoolDown = false;
+
+    public Slider visualCoolDown;
+    public float CoolTimer = 0;
+    public float CoolTime = 3;
+    void Start()
+    {
+        rampaSwitch = false;
+        controladorJugador = GetComponent<ControladorJugador>();
+        col = GetComponent<CapsuleCollider>();
+    }
+    private void Update()
+    {
+        if (sCoolDown)
+        {
+
+            CoolTimer += Time.deltaTime;
+            visualCoolDown.value = CoolTimer;
+        }
+    }
+
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += BusquedaDeObjetos; //evento
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= BusquedaDeObjetos;
+    }
+    void BusquedaDeObjetos(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "GAMEPLAY_Scene")
+        {
+            print("k");
+            print("r");
+            if (this.gameObject == GameObject.Find("Jugador_1"))
+            {
+                print("s");
+                visualCoolDown = Canvas_Manager.Instance.P1slider;
+            }
+            else if (this.gameObject == GameObject.Find("Jugador_2"))
+            {
+                print("g");
+                visualCoolDown = Canvas_Manager.Instance.P2slider;
+            }
+            print("f");
+            visualCoolDown.maxValue = CoolTime;
+            visualCoolDown.minValue = 0;
+            visualCoolDown.value = 0;
+        }
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (!enabled) return;
+
+        if (other.CompareTag("Rampa"))
+        {
+            col.material = fullFriction;
+            rampaGhost = other.transform.GetChild(1).gameObject;
+            rampaGhost.SetActive(true);
+            rampaSwitch = true;
+            rampaVisual = other.transform.GetChild(0).gameObject;
+        }
+        if (other.CompareTag("H2Gordo"))
+        {
+            controladorJugador.rb.AddForce(Vector3.up * H2gordoForce, ForceMode.Impulse);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (!enabled) return;
+
+        if (other.CompareTag("Rampa"))
+        {
+            rampaGhost.SetActive(false);
+            col.material = noFriction;
+            flacoTraje.SetActive(true);
+            other.transform.GetChild(0).gameObject.SetActive(false);
+            rampaSwitch = false;
+        }
+
+    }
+    private void OnHabilidad1()
+    {
+        if (!enabled) return;
+
+        if (rampaSwitch)
+        {
+            rampaVisual.SetActive(true);
+            rampaGhost.SetActive(false);
+            flacoTraje.SetActive(false);
+        }
+    }
+    private void OnHabilidad2()
+    {
+        if (!enabled) return;
+        if (!sCoolDown)
+        {
+            StartCoroutine(ScaleCoolDown());
+
+            if (!scaling)
+            {
+                CoolTimer = 0;
+                visualCoolDown.value = 0;
+                StartCoroutine(Scale());
+            }
+        }
+    }
+
+    IEnumerator Scale()
+    {
+        scaling = true;
+        this.gameObject.transform.localScale = scaleY;
+        yield return new WaitForSeconds(scaleTime);
+        this.gameObject.transform.localScale = new Vector3(1, 1, 1);
+        scaling = false;
+    }
+    IEnumerator ScaleCoolDown()
+    {
+        sCoolDown = true;
+        yield return new WaitForSeconds(3);
+        sCoolDown = false;
+    }
+}

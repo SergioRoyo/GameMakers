@@ -6,7 +6,8 @@ public class ControladorJugador : MonoBehaviour
 {
     public GameObject modeloGordo;
     public GameObject modeloFlaco;
-
+    public Transform manosGordo;
+    public Transform manosFlaco;
     public float speed = 5f;
     
     public float jumpForce = 5f;
@@ -17,6 +18,7 @@ public class ControladorJugador : MonoBehaviour
     public bool isGrounded;
     public float distanciaRayo = 1.1f; 
     public LayerMask capaSuelo;
+    public Chicken_take chicken_Take;
      
 
     void Awake()
@@ -26,6 +28,10 @@ public class ControladorJugador : MonoBehaviour
         // Esto hace que el jugador no se borre al cambiar de escena
         DontDestroyOnLoad(this.gameObject);
         
+    }
+    private void Start()
+    {
+        chicken_Take = GetComponent<Chicken_take>();
     }
     private void Update()
     {
@@ -38,7 +44,8 @@ public class ControladorJugador : MonoBehaviour
     {
         GetComponent<Gordo_Controller>().enabled = true;
         GetComponent<FLACO_CONTROLLER>().enabled = false;
-
+        
+        chicken_Take.manos = manosGordo;
         if (modeloGordo) modeloGordo.SetActive(true); 
         if (modeloFlaco) modeloFlaco.SetActive(false); 
     }
@@ -47,6 +54,8 @@ public class ControladorJugador : MonoBehaviour
     {
         GetComponent<Gordo_Controller>().enabled = false;
         GetComponent<FLACO_CONTROLLER>().enabled = true;
+      
+        chicken_Take.manos = manosFlaco;
         if (modeloGordo) modeloGordo.SetActive(false); 
         if (modeloFlaco) modeloFlaco.SetActive(true);
     }
