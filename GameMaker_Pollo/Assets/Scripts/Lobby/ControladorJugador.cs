@@ -57,7 +57,7 @@ public class ControladorJugador : MonoBehaviour
     {
         GetComponent<Gordo_Controller>().enabled = true;
         GetComponent<FLACO_CONTROLLER>().enabled = false;
-
+        
         chicken_Take.manos = manosGordo;
         speed = speedGordo;
         jumpForce = jumpForceGordo;
@@ -77,11 +77,14 @@ public class ControladorJugador : MonoBehaviour
         GetComponent<Gordo_Controller>().enabled = false;
         GetComponent<FLACO_CONTROLLER>().enabled = true;
 
-        chicken_Take.manos = manosFlaco;
         speed = speedFlaco;
         jumpForce = jumpForceFlaco;
+      
+
         chicken_Take.dropForceUp = dropForceUpFlaco;
         chicken_Take.dropForceForward = dropForceForwardFlaco;
+            chicken_Take.manos = manosFlaco;
+        
 
         colliderPersonaje.radius = 0.2028357f;
         colliderPersonaje.height = 1.900662f;
