@@ -104,7 +104,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
         }
 
     }
-    private void OnHabilidad1()
+    private void OnHabilidad2()
     {
         if (!enabled) return;
 
@@ -115,7 +115,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
             flacoTraje.SetActive(false);
         }
     }
-    private void OnHabilidad2()
+    private void OnHabilidad1()
     {
         if (!enabled) return;
         if (!sCoolDown)

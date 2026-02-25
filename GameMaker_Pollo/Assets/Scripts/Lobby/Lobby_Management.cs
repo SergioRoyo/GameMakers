@@ -12,18 +12,21 @@ public class Lobby_Management : MonoBehaviour
     public enum Equipos { team1, team2 }
     public Equipos equipos;
     public GameObject startButton;
-    
+
 
     public GameObject team1panel;
     public GameObject team2panel;
     public GameObject p1;
     public GameObject p2;
 
+    public bool p2Active = false;
+
 
     private List<ControladorJugador> listaJugadores = new List<ControladorJugador>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        p2Active = false;
         p1.SetActive(false);
         p2.SetActive(false);
         equipos = Equipos.team2;
@@ -39,8 +42,12 @@ public class Lobby_Management : MonoBehaviour
 
         if (PlayerConected == 2)
         {
-            p2.SetActive(true);
-            
+            if (!p2Active)
+            {
+                p2Active = true;
+                p2.SetActive(true);
+            }
+
             //activar joystic izqyuierdo, si se mueve una vez team= true, si se mueve otra vez q sea false y asi sucesivamente
             GestionarInputJugador1();
             GestionarLogicaEquipos();
@@ -66,6 +73,8 @@ public class Lobby_Management : MonoBehaviour
             team1panel.SetActive(true);
             team2panel.SetActive(false);
             startButton.SetActive(true);
+            p1.SetActive(false);
+            p2.SetActive(false);
         }
         // Si mueve a la DERECHA ->
         else if (movimiento.x > 0.5f)
@@ -74,6 +83,8 @@ public class Lobby_Management : MonoBehaviour
             team1panel.SetActive(false);
             team2panel.SetActive(true);
             startButton.SetActive(true);
+            p1.SetActive(false);
+            p2.SetActive(false);
         }
 
         // 3. Detectar botón para Iniciar (Botón Sur / A / X)

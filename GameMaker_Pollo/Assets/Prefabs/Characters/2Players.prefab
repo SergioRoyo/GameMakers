@@ -91,7 +91,14 @@ MonoBehaviour:
   manosGordo: {fileID: 8213789733133125483}
   manosFlaco: {fileID: 4529375095997716355}
   speed: 3
-  jumpForce: 5
+  speedGordo: 2.7
+  jumpForceGordo: 3.2
+  dropForceUpGordo: 1
+  dropForceForwardGordo: 0.35
+  speedFlaco: 6
+  jumpForceFlaco: 7
+  dropForceUpFlaco: 0.5
+  dropForceForwardFlaco: 0.5
   velocidadGiro: 720
   rb: {fileID: 0}
   isGrounded: 0
@@ -193,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manos: {fileID: 8213789733133125483}
-  fuerzaLanzamiento: 10
+  fuerzaLanzamiento: 5
   esperaParaRecoger: 2
   take: 0
   Listacolores:
@@ -211,6 +218,9 @@ MonoBehaviour:
   chicken_Gravity: {fileID: 0}
   timeToResetCollider: 2
   aire: 0
+  polloSpeed: 6.5
+  dropForceUp: 0.55
+  dropForceForward: 0.75
 --- !u!114 &5355444842473815118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,7 +236,7 @@ MonoBehaviour:
   controladorJugador: {fileID: 8794860839674857864}
   chicken_Take: {fileID: 0}
   speedMultiply: 2.8
-  resetSpeed: 3
+  resetSpeed: 2
   canRodar: 1
   rodandoTime: 0.5
   habilidad2: {fileID: 0}

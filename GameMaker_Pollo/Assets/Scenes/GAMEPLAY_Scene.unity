@@ -3013,6 +3013,10 @@ PrefabInstance:
       propertyPath: victory
       value: 
       objectReference: {fileID: 519998508}
+    - target: {fileID: 7300848089263641292, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
+      propertyPath: m_Radius
+      value: 1.18
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6326999021973231336, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
     m_RemovedGameObjects: []
@@ -3246,6 +3250,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   modeloGordo: {fileID: 0}
   modeloFlaco: {fileID: 0}
+  manosGordo: {fileID: 0}
+  manosFlaco: {fileID: 0}
   speed: 5
   jumpForce: 5
   velocidadGiro: 720
@@ -3255,6 +3261,7 @@ MonoBehaviour:
   capaSuelo:
     serializedVersion: 2
     m_Bits: 0
+  chicken_Take: {fileID: 0}
 --- !u!136 &817320041
 CapsuleCollider:
   m_ObjectHideFlags: 0

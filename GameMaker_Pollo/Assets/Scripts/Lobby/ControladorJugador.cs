@@ -8,18 +8,30 @@ public class ControladorJugador : MonoBehaviour
     public GameObject modeloFlaco;
     public Transform manosGordo;
     public Transform manosFlaco;
+
     public float speed = 5f;
-    
-    public float jumpForce = 5f;
+
+    float jumpForce = 5f;
+
+    public float speedGordo = 4f;
+    public float jumpForceGordo = 5f;
+    public float dropForceUpGordo = .7f;
+    public float dropForceForwardGordo = .8f;
+
+    public float speedFlaco = 6f;
+    public float jumpForceFlaco = 7f;
+    public float dropForceUpFlaco = .5f;
+    public float dropForceForwardFlaco = .5f;
+
     public float velocidadGiro = 720f;
 
     public Rigidbody rb;
-    private Vector2 input; 
+    private Vector2 input;
     public bool isGrounded;
-    public float distanciaRayo = 1.1f; 
+    public float distanciaRayo = 1.1f;
     public LayerMask capaSuelo;
     public Chicken_take chicken_Take;
-     
+
 
     void Awake()
     {
@@ -27,7 +39,7 @@ public class ControladorJugador : MonoBehaviour
 
         // Esto hace que el jugador no se borre al cambiar de escena
         DontDestroyOnLoad(this.gameObject);
-        
+
     }
     private void Start()
     {
@@ -44,19 +56,27 @@ public class ControladorJugador : MonoBehaviour
     {
         GetComponent<Gordo_Controller>().enabled = true;
         GetComponent<FLACO_CONTROLLER>().enabled = false;
-        
+
         chicken_Take.manos = manosGordo;
-        if (modeloGordo) modeloGordo.SetActive(true); 
-        if (modeloFlaco) modeloFlaco.SetActive(false); 
+        speed = speedGordo;
+        jumpForce = jumpForceGordo;
+        chicken_Take.dropForceForward = dropForceForwardGordo;
+        chicken_Take.dropForceUp = dropForceUpGordo;
+        if (modeloGordo) modeloGordo.SetActive(true);
+        if (modeloFlaco) modeloFlaco.SetActive(false);
     }
 
     public void PonerseTrajeFlaco()
     {
         GetComponent<Gordo_Controller>().enabled = false;
         GetComponent<FLACO_CONTROLLER>().enabled = true;
-      
+
         chicken_Take.manos = manosFlaco;
-        if (modeloGordo) modeloGordo.SetActive(false); 
+        speed = speedFlaco;
+        jumpForce = jumpForceFlaco;
+        chicken_Take.dropForceUp = dropForceUpFlaco;
+        chicken_Take.dropForceForward = dropForceForwardFlaco;
+        if (modeloGordo) modeloGordo.SetActive(false);
         if (modeloFlaco) modeloFlaco.SetActive(true);
     }
 
@@ -75,11 +95,7 @@ public class ControladorJugador : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-        //if (Physics.Raycast(transform.position, Vector3.down, distanciaRayo, capaSuelo))
-        //{
-        //    // Solo si el rayo toca algo que esté en la "capaSuelo", saltamos
-        //    rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        //}
+
     }
 
     // --- FÍSICAS Y MOVIMIENTO ---
@@ -88,7 +104,7 @@ public class ControladorJugador : MonoBehaviour
     {
 
         // 1. Obtenemos la dirección de la cámara ignorando la altura (Y)
-        // Esto es vital para que si la cámara mira hacia abajo, el personaje no intente clavarse en el suelo
+
         Vector3 forward = Camera.main.transform.forward;
         Vector3 right = Camera.main.transform.right;
 

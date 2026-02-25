@@ -30,6 +30,11 @@ public class Chicken_take : MonoBehaviour
     public float timeToResetCollider = 2f;
     private float timer = 0f;
     public bool aire=false;
+    public float polloSpeed = 10;
+
+   public float dropForceUp = 0.55f;
+   public float dropForceForward = 0.75f;
+    
     //public KeyCode teclaInteractuar = KeyCode.E;
 
     void Start()
@@ -58,6 +63,7 @@ public class Chicken_take : MonoBehaviour
             chicken_Gravity = pollo.GetComponent<Chicken_gravity>();
             chickenGoal = GameObject.FindGameObjectWithTag("TOXIC");
             polloagent.destination = chickenGoal.transform.position;
+            polloagent.speed = polloSpeed;
         }
     }
 
@@ -149,7 +155,7 @@ public class Chicken_take : MonoBehaviour
         if (rb != null)
         {
             rb.isKinematic = false;
-            rb.AddForce((Vector3.up * .55f + transform.forward * 0.1f) * fuerzaLanzamiento, ForceMode.Impulse);
+            rb.AddForce((Vector3.up * dropForceUp + transform.forward * dropForceForward) * fuerzaLanzamiento, ForceMode.Impulse);
             aire = true;
         }
 
