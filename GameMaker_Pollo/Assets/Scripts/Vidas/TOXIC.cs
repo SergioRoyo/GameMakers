@@ -7,6 +7,8 @@ public class TOXIC : MonoBehaviour
     public Revivir_Controller revivirController;
     public Revivir revivir;
     public int player = 0;
+    public bool muerto1 =false;
+    public bool muerto2 =false;
     private void Awake()
     {
         if (Instance == null)
@@ -26,13 +28,18 @@ public class TOXIC : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        muerto1=true;
+        muerto2=true;
         player = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (muerto1 && muerto2)
+        {
+            ResetGame();
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -42,6 +49,7 @@ public class TOXIC : MonoBehaviour
             other.transform.position = cielo;
             if (other.name == "Jugador_1")
             {
+                muerto1=true; 
                 GameObject otro = GameObject.Find("Jugador_2");
                 revivirController = otro.GetComponent<Revivir_Controller>();
                 revivirController.vidasCount--;
@@ -50,6 +58,7 @@ public class TOXIC : MonoBehaviour
             }
             else if (other.name == "Jugador_2")
             {
+                muerto2 = true;
                 GameObject otro = GameObject.Find("Jugador_1");
                 revivirController = otro.GetComponent<Revivir_Controller>();
                 revivirController.vidasCount--;
@@ -58,26 +67,27 @@ public class TOXIC : MonoBehaviour
             }
             if (revivirController.vidasCount < 0)
             {
-                foreach (GameObject player in CameraFollow2.Instance.players)
-                {
-                    Destroy(player);
-                }
-                Destroy(GameObject.FindGameObjectWithTag("Pollo"));
-                SceneManager.LoadScene(0);
+                ResetGame();
 
             }
         }
         if (other.CompareTag("Pollo"))
         {
 
+            ResetGame();
+        }
+
+
+    }
+
+    public void ResetGame()
+    {
             foreach (GameObject player in CameraFollow2.Instance.players)
             {
                 Destroy(player);
             }
             Destroy(GameObject.FindGameObjectWithTag("Pollo"));
             SceneManager.LoadScene(0);
-
-        }
-
+        
     }
 }

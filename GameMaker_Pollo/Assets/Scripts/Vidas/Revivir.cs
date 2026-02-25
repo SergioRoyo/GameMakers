@@ -45,7 +45,14 @@ public class Revivir : MonoBehaviour
         muerto.transform.position = zonaAterrizar;
         muerto = null;
         yield return new WaitForSeconds(revivirTime);
-
+        if (muerto == GameObject.Find("Jugador_1"))
+        {
+            TOXIC.Instance.muerto1 = false;
+        }
+        else if (muerto == GameObject.Find("Jugador_2"))
+        {
+            TOXIC.Instance.muerto2= false;
+        }
         Destroy(this.gameObject);
     }
 }
