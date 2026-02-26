@@ -91,15 +91,15 @@ MonoBehaviour:
   manosGordo: {fileID: 8213789733133125483}
   manosFlaco: {fileID: 4529375095997716355}
   speed: 3
-  speedGordo: 2.7
+  speedGordo: 2.9
   jumpForceGordo: 5
   dropForceUpGordo: 1.15
   dropForceForwardGordo: 0.4
-  speedFlaco: 3.3
-  jumpForceFlaco: 7
-  dropForceUpFlaco: 0.9
-  dropForceForwardFlaco: 0.6
-  velocidadGiro: 720
+  speedFlaco: 3.1
+  jumpForceFlaco: 6
+  dropForceUpFlaco: 1.05
+  dropForceForwardFlaco: 0.4
+  velocidadGiro: 800
   rb: {fileID: 0}
   isGrounded: 0
   distanciaRayo: 0.3
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manos: {fileID: 8213789733133125483}
-  fuerzaLanzamiento: 5
+  fuerzaLanzamiento: 4.5
   esperaParaRecoger: 2
   take: 0
   Listacolores:

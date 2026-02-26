@@ -3,6 +3,8 @@ using UnityEngine;
 public class Chicken_gravity : MonoBehaviour
 {
     public float gravity = -5f;
+    public float downGravity = -3.5f;
+
     Rigidbody rb;
     public bool sueleando = false;
 

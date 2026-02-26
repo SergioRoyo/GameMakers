@@ -28,8 +28,8 @@ public class TOXIC : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        muerto1=true;
-        muerto2=true;
+        muerto1=false;
+        muerto2=false;
         player = 0;
     }
 

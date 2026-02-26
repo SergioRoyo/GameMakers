@@ -53,19 +53,18 @@ public class Gordo_Controller : MonoBehaviour
     {
         if (scene.name == "GAMEPLAY_Scene")
         {
-            print("k");
-            print("r");
+           
             if (this.gameObject == GameObject.Find("Jugador_1"))
             {
-                print("s");
+               
                 visualCoolDown = Canvas_Manager.Instance.P1slider;
             }
             else if (this.gameObject == GameObject.Find("Jugador_2"))
             {
-                print("g");
+              
                 visualCoolDown = Canvas_Manager.Instance.P2slider;
             }
-            print("f");
+          
             visualCoolDown.maxValue = CoolTime;
             visualCoolDown.minValue = 0;
             visualCoolDown.value = 0;
