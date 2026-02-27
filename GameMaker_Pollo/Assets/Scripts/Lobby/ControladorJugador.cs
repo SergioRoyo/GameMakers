@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 
 public class ControladorJugador : MonoBehaviour
@@ -35,7 +36,7 @@ public class ControladorJugador : MonoBehaviour
 
     public float gravity = -9.8f;
     public float downGravity = -18f;
-
+    public GameObject rigGordo;
 
     void Awake()
     {
@@ -118,6 +119,7 @@ public class ControladorJugador : MonoBehaviour
     public void OnMove(InputValue value)
     {
         input = value.Get<Vector2>();
+        rigGordo.GetComponent<Animation>().Play("Run");
     }
 
     // Esta función se llama sola cuando pulsas el botón Sur (A/X)
@@ -126,6 +128,7 @@ public class ControladorJugador : MonoBehaviour
         if (isGrounded && Physics.Raycast(transform.position, Vector3.down, distanciaRayo, capaSuelo))
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            rigGordo.GetComponent<Animation>().Play("Jump"); 
         }
 
     }
