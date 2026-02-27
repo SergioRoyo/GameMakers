@@ -11,7 +11,7 @@ public class ControladorJugador : MonoBehaviour
 
     public float speed = 5f;
 
-    float jumpForce = 5f;
+    public float jumpForce = 5f;
 
     public float speedGordo = 4f;
     public float jumpForceGordo = 5f;
@@ -33,6 +33,9 @@ public class ControladorJugador : MonoBehaviour
     public Chicken_take chicken_Take;
     public CapsuleCollider colliderPersonaje;
 
+    public float gravity = -9.8f;
+    public float downGravity = -18f;
+
 
     void Awake()
     {
@@ -48,8 +51,23 @@ public class ControladorJugador : MonoBehaviour
     }
     private void Update()
     {
-        Debug.DrawRay(transform.position, Vector3.down * distanciaRayo, Color.red);
+        if (rb != null)
+        {
+
+            float verticalSpeed = rb.linearVelocity.y;
+
+            if (verticalSpeed > 0.1f)
+            {
+                gravity = -9.8f;
+            }
+            else if (verticalSpeed < -0.1f)
+            {
+                gravity = downGravity;
+            }
+        }
+
     }
+ 
 
     //  LOBBY
 
@@ -116,7 +134,10 @@ public class ControladorJugador : MonoBehaviour
 
     void FixedUpdate()
     {
+        Vector3 gravedadCustom = transform.up * gravity;
 
+
+        rb.AddForce(gravedadCustom, ForceMode.Acceleration);
         // 1. Obtenemos la dirección de la cámara ignorando la altura (Y)
 
         Vector3 forward = Camera.main.transform.forward;
@@ -148,6 +169,10 @@ public class ControladorJugador : MonoBehaviour
 
     // --- DETECCIÓN DE SUELO ---
 
-    private void OnCollisionStay(Collision col) => isGrounded = true;
+    private void OnCollisionStay(Collision col)
+    {
+        isGrounded = true;
+        gravity = -9.8f;
+    }
     private void OnCollisionExit(Collision col) => isGrounded = false;
 }
