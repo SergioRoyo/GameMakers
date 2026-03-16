@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -34,7 +35,11 @@ public class Chicken_take : MonoBehaviour
 
    public float dropForceUp = 0.55f;
    public float dropForceForward = 0.75f;
-    
+
+    [Header("Configuración de Destinos")]
+    public List<Transform> listaDeDestinos = new List<Transform>(); // Lista donde arrastraremos los objetivos
+    private Transform destinoMasCercano;
+
     //public KeyCode teclaInteractuar = KeyCode.E;
 
     void Start()
@@ -64,6 +69,46 @@ public class Chicken_take : MonoBehaviour
             chickenGoal = GameObject.FindGameObjectWithTag("TOXIC");
             polloagent.destination = chickenGoal.transform.position;
             polloagent.speed = polloSpeed;
+            GameObject[] metas = GameObject.FindGameObjectsWithTag("TOXIC");
+            listaDeDestinos.Clear(); // Limpiamos la lista anterior
+            foreach (GameObject meta in metas)
+            {
+                listaDeDestinos.Add(meta.transform);
+            }
+
+            }
+    }
+    Transform ObtenerDestinoMasCercano()
+    {
+        Transform masCercano = null;
+        float distanciaMinima = Mathf.Infinity; // Empezamos con una distancia infinita
+        Vector3 posicionActual = pollo.transform.position;
+
+        foreach (Transform destino in listaDeDestinos)
+        {
+            if (destino != null)
+            {
+                float distancia = Vector3.Distance(posicionActual, destino.position);
+                if (distancia < distanciaMinima)
+                {
+                    distanciaMinima = distancia;
+                    masCercano = destino;
+                }
+            }
+        }
+        return masCercano;
+    }
+
+    // Función para actualizar el destino del NavMesh
+    void ActualizarDestinoIA()
+    {
+        if (polloagent != null && polloagent.enabled)
+        {
+            destinoMasCercano = ObtenerDestinoMasCercano();
+            if (destinoMasCercano != null)
+            {
+                polloagent.SetDestination(destinoMasCercano.position);
+            }
         }
     }
 
@@ -90,7 +135,8 @@ public class Chicken_take : MonoBehaviour
             Rigidbody rb = pollo.GetComponent<Rigidbody>();
             rb.isKinematic = true;
             polloagent.enabled = true;
-            polloagent.SetDestination(chickenGoal.transform.position);
+                ActualizarDestinoIA();
+                //polloagent.SetDestination(chickenGoal.transform.position);
         }
         }
     }
