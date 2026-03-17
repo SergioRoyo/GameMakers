@@ -23,10 +23,14 @@ public class FLACO_CONTROLLER : MonoBehaviour
     public Slider visualCoolDown;
     public float CoolTimer = 0;
     public float CoolTime = 3;
+
+    public float rampaJump = 6f;
+    public bool habilidad2=true;
     void Start()
     {
+        habilidad2 = false;
         rampaSwitch = false;
-        controladorJugador = GetComponent<ControladorJugador>();
+        controladorJugador = this.gameObject.GetComponent<ControladorJugador>();
         col = GetComponent<CapsuleCollider>();
     }
     private void Update()
@@ -36,6 +40,10 @@ public class FLACO_CONTROLLER : MonoBehaviour
 
             CoolTimer += Time.deltaTime;
             visualCoolDown.value = CoolTimer;
+        }
+        if (habilidad2)
+        {
+            controladorJugador.jumpForce = rampaJump;
         }
     }
 
@@ -83,6 +91,10 @@ public class FLACO_CONTROLLER : MonoBehaviour
             rampaGhost.SetActive(true);
             rampaSwitch = true;
             rampaVisual = other.transform.GetChild(0).gameObject;
+          
+
+           
+            
         }
         if (other.CompareTag("H2Gordo"))
         {
@@ -100,6 +112,8 @@ public class FLACO_CONTROLLER : MonoBehaviour
             flacoTraje.SetActive(true);
             other.transform.GetChild(0).gameObject.SetActive(false);
             rampaSwitch = false;
+            controladorJugador.jumpForce = controladorJugador.jumpForceFlaco;
+            habilidad2 = false;
         }
 
     }
@@ -109,6 +123,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
 
         if (rampaSwitch)
         {
+           habilidad2 = true;
             rampaVisual.SetActive(true);
             rampaGhost.SetActive(false);
             flacoTraje.SetActive(false);

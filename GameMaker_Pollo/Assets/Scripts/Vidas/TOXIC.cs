@@ -9,6 +9,7 @@ public class TOXIC : MonoBehaviour
     public int player = 0;
     public bool muerto1 =false;
     public bool muerto2 =false;
+    public GameObject cielo;
     private void Awake()
     {
         if (Instance == null)
@@ -45,8 +46,9 @@ public class TOXIC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Vector3 cielo = new Vector3(20f, 20f, -200f);
-            other.transform.position = cielo;
+            
+            Vector3 cieloT = cielo.transform.position;
+            other.transform.position = cieloT;
             if (other.name == "Jugador_1")
             {
                 muerto1=true; 
