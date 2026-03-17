@@ -27,14 +27,15 @@ public class Chicken_take : MonoBehaviour
 
     public float timeCaidaPollo = 2f;
     public Chicken_gravity chicken_Gravity;
+    public ControladorJugador controladorJugador;
 
     public float timeToResetCollider = 2f;
     private float timer = 0f;
-    public bool aire=false;
+    public bool aire = false;
     public float polloSpeed = 10;
 
-   public float dropForceUp = 0.55f;
-   public float dropForceForward = 0.75f;
+    public float dropForceUp = 0.55f;
+    public float dropForceForward = 0.75f;
 
     [Header("Configuración de Destinos")]
     public List<Transform> listaDeDestinos = new List<Transform>(); // Lista donde arrastraremos los objetivos
@@ -45,9 +46,10 @@ public class Chicken_take : MonoBehaviour
     void Start()
     {
         aire = false;
-       
+
         if (polloagent != null)
             polloagent.destination = chickenGoal.transform.position; // le da destino al navmesh del pollo
+        controladorJugador = GetComponent<ControladorJugador>();
     }
 
     private void OnEnable()
@@ -76,7 +78,7 @@ public class Chicken_take : MonoBehaviour
                 listaDeDestinos.Add(meta.transform);
             }
 
-            }
+        }
     }
     Transform ObtenerDestinoMasCercano()
     {
@@ -114,12 +116,12 @@ public class Chicken_take : MonoBehaviour
 
     void Update()
     {
-       
+
         if (aire)
         {
 
             timer -= Time.deltaTime;
-            if(timer <= 0f)
+            if (timer <= 0f)
             {
                 Collider col = pollo.GetComponent<Collider>();
                 if (col != null) col.enabled = true;
@@ -130,14 +132,14 @@ public class Chicken_take : MonoBehaviour
         if (pollo != null)
         {
 
-        if (chicken_Gravity.sueleando)
-        {
-            Rigidbody rb = pollo.GetComponent<Rigidbody>();
-            rb.isKinematic = true;
-            polloagent.enabled = true;
+            if (chicken_Gravity.sueleando)
+            {
+                Rigidbody rb = pollo.GetComponent<Rigidbody>();
+                rb.isKinematic = true;
+                polloagent.enabled = true;
                 ActualizarDestinoIA();
                 //polloagent.SetDestination(chickenGoal.transform.position);
-        }
+            }
         }
     }
     public void OnTake()
@@ -162,6 +164,7 @@ public class Chicken_take : MonoBehaviour
 
     void TakeChicken()
     {
+        
         chicken_Gravity.sueleando = false;
         take = true;
 
@@ -184,6 +187,15 @@ public class Chicken_take : MonoBehaviour
 
     public void DropChicken()
     {
+        //if(corriendo)
+        //{
+        //    controladorJugador.animator.SetTrigger("throwRun");
+        //}
+        //else
+        //{
+
+        //    controladorJugador.animator.SetTrigger("throw");
+        //}
         if (!take) return;
 
         take = false;
@@ -197,7 +209,7 @@ public class Chicken_take : MonoBehaviour
         pollo.transform.position = transform.position + transform.forward * 0.7f;
 
         Rigidbody rb = pollo.GetComponent<Rigidbody>();
-            
+
         if (rb != null)
         {
             rb.isKinematic = false;
@@ -210,7 +222,7 @@ public class Chicken_take : MonoBehaviour
 
         timer = timeToResetCollider;
     }
-   
+
 
     void ReactivarNavMesh()
     {
