@@ -45,7 +45,7 @@ public class TOXIC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Vector3 cielo = this.gameObject.transform.position + (Vector3.up * 90);
+            Vector3 cielo = new Vector3(20f, 20f, -200f);
             other.transform.position = cielo;
             if (other.name == "Jugador_1")
             {
