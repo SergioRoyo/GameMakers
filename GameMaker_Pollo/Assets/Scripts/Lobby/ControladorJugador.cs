@@ -36,8 +36,11 @@ public class ControladorJugador : MonoBehaviour
 
     public float gravity = -9.8f;
     public float downGravity = -18f;
-    public GameObject rigGordo;
+    //public GameObject rigGordo;
+
     public Animator animator;
+    public Animator gordoAnimator;
+    public Animator flacoAnimator;
 
     void Awake()
     {
@@ -69,11 +72,13 @@ public class ControladorJugador : MonoBehaviour
         }
         if (input.magnitude > 0.1f)
         {
-            animator.SetBool("run", true);
+            animator.SetBool("runG", true);
+            animator.SetBool("runF", true);
         }
         else
         {
-            animator.SetBool("run", false);
+            animator.SetBool("runG", false);
+            animator.SetBool("runF", false);
         }
 
     }
@@ -98,6 +103,7 @@ public class ControladorJugador : MonoBehaviour
 
         if (modeloGordo) modeloGordo.SetActive(true);
         if (modeloFlaco) modeloFlaco.SetActive(false);
+        animator = gordoAnimator;
     }
 
     public void PonerseTrajeFlaco()
@@ -120,6 +126,7 @@ public class ControladorJugador : MonoBehaviour
 
         if (modeloGordo) modeloGordo.SetActive(false);
         if (modeloFlaco) modeloFlaco.SetActive(true);
+        animator = flacoAnimator;
     }
 
     // --- SISTEMA DE INPUT (MANDOS) ---
@@ -139,7 +146,7 @@ public class ControladorJugador : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             //rigGordo.GetComponent<Animation>().Play("Jump");
-            animator.SetTrigger("jump");
+           
         }
 
     }
