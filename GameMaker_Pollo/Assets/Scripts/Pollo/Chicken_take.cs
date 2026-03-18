@@ -36,6 +36,7 @@ public class Chicken_take : MonoBehaviour
 
     public float dropForceUp = 0.55f;
     public float dropForceForward = 0.75f;
+    public FLACO_CONTROLLER flaco_controller;
 
     [Header("Configuración de Destinos")]
     public List<Transform> listaDeDestinos = new List<Transform>(); // Lista donde arrastraremos los objetivos
@@ -45,6 +46,7 @@ public class Chicken_take : MonoBehaviour
 
     void Start()
     {
+        flaco_controller= GetComponent<FLACO_CONTROLLER>();
         aire = false;
 
         if (polloagent != null)
@@ -187,6 +189,18 @@ public class Chicken_take : MonoBehaviour
 
     public void DropChicken()
     {
+        if (!flaco_controller.scaling)
+        {
+            controladorJugador.animator.SetTrigger("throwF");
+
+        }
+        else if (flaco_controller.scaling)
+
+        {
+        controladorJugador.animator.SetTrigger("throwFS");
+
+        }
+
         //if(corriendo)
         //{
         //    controladorJugador.animator.SetTrigger("throwRun");

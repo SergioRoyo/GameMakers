@@ -6003,11 +6003,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   chicken_Take: {fileID: 0}
+  flaco_controller: {fileID: 0}
   colliderPersonaje: {fileID: 0}
   gravity: -9.8
   downGravity: -18
-  rigGordo: {fileID: 0}
   animator: {fileID: 0}
+  gordoAnimator: {fileID: 0}
+  flacoAnimator: {fileID: 0}
 --- !u!136 &817320041
 CapsuleCollider:
   m_ObjectHideFlags: 0
