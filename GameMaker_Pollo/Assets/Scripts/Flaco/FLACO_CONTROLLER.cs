@@ -26,8 +26,12 @@ public class FLACO_CONTROLLER : MonoBehaviour
 
     public float rampaJump = 6f;
     public bool habilidad2=true;
+    public Transform manosScaled;
+    public Transform manosNormal;
+    public Chicken_take chicken_Take;
     void Start()
     {
+        chicken_Take = GetComponent<Chicken_take>();
         habilidad2 = false;
         rampaSwitch = false;
         controladorJugador = this.gameObject.GetComponent<ControladorJugador>();
@@ -109,7 +113,10 @@ public class FLACO_CONTROLLER : MonoBehaviour
         {
             rampaGhost.SetActive(false);
             col.material = noFriction;
+          
             flacoTraje.SetActive(true);
+            controladorJugador.animator.SetTrigger("descanso");
+
             other.transform.GetChild(0).gameObject.SetActive(false);
             rampaSwitch = false;
             controladorJugador.jumpForce = controladorJugador.jumpForceFlaco;
@@ -145,14 +152,18 @@ public class FLACO_CONTROLLER : MonoBehaviour
     IEnumerator Scale()
     {
         scaling = true;
-        flacoTraje.SetActive(false);
-        flacoTrajeScaled.SetActive(true);
+        //flacoTraje.SetActive(false);
+        //flacoTrajeScaled.SetActive(true);
+       
 
         controladorJugador.colliderPersonaje.radius = 0.2028357f;
         controladorJugador.colliderPersonaje.height = 2.522687f;
         controladorJugador.colliderPersonaje.center = new Vector3(0, 1.072925f, 0.05180952f);
 
-        controladorJugador.manosFlaco.transform.localPosition = new Vector3 (0.106f, 1.885f, 0.656f);
+        chicken_Take.manos = manosScaled;
+        chicken_Take.pollo.transform.SetParent(chicken_Take.manos);
+        chicken_Take.pollo.transform.localPosition = Vector3.zero;
+        chicken_Take.pollo.transform.localRotation = Quaternion.identity;
 
         yield return new WaitForSeconds(scaleTime);
 
@@ -160,9 +171,13 @@ public class FLACO_CONTROLLER : MonoBehaviour
         controladorJugador.colliderPersonaje.height = 1.900662f;
         controladorJugador.colliderPersonaje.center = new Vector3(0, 0.7619121f, 0);
 
-        controladorJugador.manosFlaco.transform.localPosition = new Vector3(0.106f, 1.391f, 0.656f);
-
+       chicken_Take.manos = manosNormal;
+        chicken_Take.pollo.transform.SetParent(chicken_Take.manos);
+        chicken_Take.pollo.transform.localPosition = Vector3.zero;
+        chicken_Take.pollo.transform.localRotation = Quaternion.identity;
         flacoTraje.SetActive(true);
+        controladorJugador.animator.SetTrigger("descanso");
+   
         flacoTrajeScaled.SetActive(false);
         scaling = false;
                 CoolTimer = 0;

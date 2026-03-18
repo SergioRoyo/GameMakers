@@ -32,6 +32,7 @@ public class ControladorJugador : MonoBehaviour
     public float distanciaRayo = 1.1f;
     public LayerMask capaSuelo;
     public Chicken_take chicken_Take;
+    public FLACO_CONTROLLER flaco_controller;
     public CapsuleCollider colliderPersonaje;
 
     public float gravity = -9.8f;
@@ -52,6 +53,7 @@ public class ControladorJugador : MonoBehaviour
     }
     private void Start()
     {
+        flaco_controller = GetComponent<FLACO_CONTROLLER>();
         chicken_Take = GetComponent<Chicken_take>();
     }
     private void Update()
@@ -70,27 +72,82 @@ public class ControladorJugador : MonoBehaviour
                 gravity = downGravity;
             }
         }
-        if (input.magnitude > 0.1f)
+        if (animator.gameObject.activeInHierarchy)
         {
-            animator.SetBool("runG", true);
-            animator.SetBool("runF", true);
-        }
-        else
-        {
-            animator.SetBool("runG", false);
-            animator.SetBool("runF", false);
+
+            if (input.magnitude > 0.1f)
+            {
+                if (chicken_Take.take && !flaco_controller.scaling)
+                {
+                    animator.SetBool("runF", false);
+                    animator.SetBool("runFS", false);
+                    animator.SetBool("runFPS", false);
+
+                    animator.SetBool("runFP", true);
+                }
+                else if (chicken_Take.take && flaco_controller.scaling)
+                {
+
+                    animator.SetBool("runF", false);
+                    animator.SetBool("runFP", false);
+                    animator.SetBool("runFS", false);
+
+
+                    animator.SetBool("runFPS", true);
+                }
+                else if (!chicken_Take.take && flaco_controller.scaling)
+                {
+                    animator.SetBool("runF", false);
+                    animator.SetBool("runFP", false);
+                    animator.SetBool("runFPS", false);
+
+                    animator.SetBool("runFS", true);
+                }
+                else if(!chicken_Take.take && !flaco_controller.scaling)
+                {
+                    animator.SetBool("runGP", false);
+                    animator.SetBool("runFP", false);
+                    animator.SetBool("runFS", false);
+                    animator.SetBool("runFPS", false);
+
+
+                    animator.SetBool("runG", true);
+                    animator.SetBool("runF", true);
+
+
+                }
+            }
+            else
+            {
+                if (!chicken_Take.take)
+                {
+                    resetAnimation();
+                    
+                }
+                else
+                {
+                    resetAnimation();
+                }
+
+            }
         }
 
     }
- 
 
+    public void resetAnimation()
+    {
+        animator.SetBool("runG", false);
+        animator.SetBool("runF", false);
+        animator.SetBool("runGP", false);
+        animator.SetBool("runFP", false);
+    }
     //  LOBBY
 
     public void PonerseTrajeGordo()
     {
         GetComponent<Gordo_Controller>().enabled = true;
         GetComponent<FLACO_CONTROLLER>().enabled = false;
-        
+
         chicken_Take.manos = manosGordo;
         speed = speedGordo;
         jumpForce = jumpForceGordo;
@@ -113,12 +170,12 @@ public class ControladorJugador : MonoBehaviour
 
         speed = speedFlaco;
         jumpForce = jumpForceFlaco;
-      
+
 
         chicken_Take.dropForceUp = dropForceUpFlaco;
         chicken_Take.dropForceForward = dropForceForwardFlaco;
-            chicken_Take.manos = manosFlaco;
-        
+        chicken_Take.manos = manosFlaco;
+
 
         colliderPersonaje.radius = 0.2028357f;
         colliderPersonaje.height = 1.900662f;
@@ -136,7 +193,7 @@ public class ControladorJugador : MonoBehaviour
     {
         input = value.Get<Vector2>();
         //rigGordo.GetComponent<Animation>().Play("Run");
-       
+
     }
 
     // Esta función se llama sola cuando pulsas el botón Sur (A/X)
@@ -146,7 +203,7 @@ public class ControladorJugador : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             //rigGordo.GetComponent<Animation>().Play("Jump");
-           
+
         }
 
     }
