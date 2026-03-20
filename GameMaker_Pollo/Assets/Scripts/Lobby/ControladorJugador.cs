@@ -121,12 +121,21 @@ public class ControladorJugador : MonoBehaviour
             {
                 if (!chicken_Take.take)
                 {
-                    resetAnimation();
-                    
+                    animator.SetBool("runF", false);
+                    if (flaco_controller.scaling)
+                    {
+                        animator.SetBool("runFS", false);
+                        animator.SetBool("descansoFS", true);
+                    }
                 }
-                else
+                else if(chicken_Take.take) 
                 {
-                    resetAnimation();
+                    animator.SetBool("runFP", false);
+                    if (flaco_controller.scaling)
+                    {
+                        animator.SetBool("runFPS", false);
+                        animator.SetBool("descansoFPS", true);
+                    }
                 }
 
             }

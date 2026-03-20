@@ -154,16 +154,29 @@ public class FLACO_CONTROLLER : MonoBehaviour
         scaling = true;
         //flacoTraje.SetActive(false);
         //flacoTrajeScaled.SetActive(true);
-       
+        if (chicken_Take.take)
+        {
+            controladorJugador.animator.SetBool("descansoFPS", true);
+        }
+        else
+        {
+            controladorJugador.animator.SetBool("descansoFS", true);
+
+        }
+
 
         controladorJugador.colliderPersonaje.radius = 0.2028357f;
         controladorJugador.colliderPersonaje.height = 2.522687f;
         controladorJugador.colliderPersonaje.center = new Vector3(0, 1.072925f, 0.05180952f);
 
         chicken_Take.manos = manosScaled;
+        if(chicken_Take.take) 
+        {
+
         chicken_Take.pollo.transform.SetParent(chicken_Take.manos);
         chicken_Take.pollo.transform.localPosition = Vector3.zero;
         chicken_Take.pollo.transform.localRotation = Quaternion.identity;
+        }
 
         yield return new WaitForSeconds(scaleTime);
 
@@ -172,10 +185,18 @@ public class FLACO_CONTROLLER : MonoBehaviour
         controladorJugador.colliderPersonaje.center = new Vector3(0, 0.7619121f, 0);
 
        chicken_Take.manos = manosNormal;
-        chicken_Take.pollo.transform.SetParent(chicken_Take.manos);
-        chicken_Take.pollo.transform.localPosition = Vector3.zero;
-        chicken_Take.pollo.transform.localRotation = Quaternion.identity;
+        if (chicken_Take.take)
+        { 
+
+            chicken_Take.pollo.transform.SetParent(chicken_Take.manos);
+            chicken_Take.pollo.transform.localPosition = Vector3.zero;
+            chicken_Take.pollo.transform.localRotation = Quaternion.identity;
+        }
         flacoTraje.SetActive(true);
+        controladorJugador.animator.SetBool("runFPS", false);
+        controladorJugador.animator.SetBool("descansoFS", false);
+
+
         controladorJugador.animator.SetTrigger("descanso");
    
         flacoTrajeScaled.SetActive(false);
