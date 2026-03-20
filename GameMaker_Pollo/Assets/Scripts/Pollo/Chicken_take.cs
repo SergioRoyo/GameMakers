@@ -278,6 +278,9 @@ public class Chicken_take : MonoBehaviour
             pollo.GetComponent<Renderer>().material.color = Listacolores[Colores % Listacolores.Length];
             Colores++;
             Tiempo++;
+            Vector3 crecimiento = new Vector3(0.01f, 0.01f, 0.01f);
+
+            pollo.transform.localScale += crecimiento;
             StartCoroutine(changeColor());
         }
     }
