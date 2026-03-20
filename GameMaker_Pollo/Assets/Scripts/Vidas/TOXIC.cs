@@ -30,7 +30,6 @@ public class TOXIC : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        dead= GameObject.FindGameObjectWithTag("pmuerte");
         dead.SetActive(false);
         muerto1 = false;
         muerto2 = false;
