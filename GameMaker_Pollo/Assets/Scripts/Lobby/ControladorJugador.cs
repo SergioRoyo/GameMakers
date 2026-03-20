@@ -53,7 +53,7 @@ public class ControladorJugador : MonoBehaviour
     }
     private void Start()
     {
-        flaco_controller = GetComponent<FLACO_CONTROLLER>();
+        flaco_controller = GetComponent<FLACO_CONTROLLER>(); //deteccion de scripts
         chicken_Take = GetComponent<Chicken_take>();
     }
     private void Update()
@@ -63,7 +63,7 @@ public class ControladorJugador : MonoBehaviour
 
             float verticalSpeed = rb.linearVelocity.y;
 
-            if (verticalSpeed > 0.1f)
+            if (verticalSpeed > 0.1f)//sistema de gravedad del pollo simulacion de planear
             {
                 gravity = -9.8f;
             }
@@ -72,7 +72,7 @@ public class ControladorJugador : MonoBehaviour
                 gravity = downGravity;
             }
         }
-        if (animator.gameObject.activeInHierarchy)
+        if (animator.gameObject.activeInHierarchy)//animaciones cuando se mueve o para
         {
 
             if (input.magnitude > 0.1f)
@@ -185,16 +185,10 @@ public class ControladorJugador : MonoBehaviour
 
     }
 
-    public void resetAnimation()
-    {
-        animator.SetBool("runG", false);
-        animator.SetBool("runF", false);
-        animator.SetBool("runGP", false);
-        animator.SetBool("runFP", false);
-    }
+   
     //  LOBBY
 
-    public void PonerseTrajeGordo()
+    public void PonerseTrajeGordo()// sistema en el cual se le dan las propiedades al gordo
     {
         GetComponent<Gordo_Controller>().enabled = true;
         GetComponent<FLACO_CONTROLLER>().enabled = false;
@@ -214,7 +208,7 @@ public class ControladorJugador : MonoBehaviour
         animator = gordoAnimator;
     }
 
-    public void PonerseTrajeFlaco()
+    public void PonerseTrajeFlaco()// sistema en el cual se le dan las propiedades al flaco
     {
         GetComponent<Gordo_Controller>().enabled = false;
         GetComponent<FLACO_CONTROLLER>().enabled = true;
@@ -237,23 +231,21 @@ public class ControladorJugador : MonoBehaviour
         animator = flacoAnimator;
     }
 
-    // --- SISTEMA DE INPUT (MANDOS) ---
+    // SISTEMA DE INPUT (MANDOS) 
 
     // Esta función se llama sola cuando mueves el stick
-    public void OnMove(InputValue value)
+    public void OnMove(InputValue value)//moverse
     {
         input = value.Get<Vector2>();
-        //rigGordo.GetComponent<Animation>().Play("Run");
 
     }
 
     // Esta función se llama sola cuando pulsas el botón Sur (A/X)
     public void OnJump()
     {
-        if (isGrounded && Physics.Raycast(transform.position, Vector3.down, distanciaRayo, capaSuelo))
+        if (isGrounded && Physics.Raycast(transform.position, Vector3.down, distanciaRayo, capaSuelo))//salta solo si esta en el suelo y el raycast llega al suelo 
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            //rigGordo.GetComponent<Animation>().Play("Jump");
 
         }
 
@@ -278,7 +270,7 @@ public class ControladorJugador : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        // 2. Calculamos el movimiento basándonos en hacia dónde mira la cámara
+        // 2. Calculamos el movimiento  hacia dónde mira la cámara
         Vector3 movement = (forward * input.y + right * input.x);
 
         // 3. Movemos el Rigidbody
@@ -289,7 +281,7 @@ public class ControladorJugador : MonoBehaviour
         {
             Quaternion rotacionObjetivo = Quaternion.LookRotation(movement);
 
-            // Quaternion.RotateTowards hace que el giro sea suave y no instantáneo
+            // giro  suave y no instantáneo
             Quaternion rotacionSuave = Quaternion.RotateTowards(rb.rotation, rotacionObjetivo, velocidadGiro * Time.fixedDeltaTime);
 
             rb.MoveRotation(rotacionSuave);
