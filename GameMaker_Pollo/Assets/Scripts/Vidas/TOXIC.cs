@@ -7,9 +7,10 @@ public class TOXIC : MonoBehaviour
     public Revivir_Controller revivirController;
     public Revivir revivir;
     public int player = 0;
-    public bool muerto1 =false;
-    public bool muerto2 =false;
+    public bool muerto1 = false;
+    public bool muerto2 = false;
     public GameObject cielo;
+    public GameObject dead;
     private void Awake()
     {
         if (Instance == null)
@@ -29,8 +30,9 @@ public class TOXIC : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        muerto1=false;
-        muerto2=false;
+        dead.SetActive(false);
+        muerto1 = false;
+        muerto2 = false;
         player = 0;
     }
 
@@ -46,12 +48,12 @@ public class TOXIC : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            
+
             Vector3 cieloT = cielo.transform.position;
             other.transform.position = cieloT;
             if (other.name == "Jugador_1")
             {
-                muerto1=true; 
+                muerto1 = true;
                 GameObject otro = GameObject.Find("Jugador_2");
                 revivirController = otro.GetComponent<Revivir_Controller>();
                 revivirController.vidasCount--;
@@ -84,12 +86,23 @@ public class TOXIC : MonoBehaviour
 
     public void ResetGame()
     {
-            foreach (GameObject player in CameraFollow2.Instance.players)
-            {
-                Destroy(player);
-            }
-            Destroy(GameObject.FindGameObjectWithTag("Pollo"));
-            SceneManager.LoadScene(0);
-        
+        foreach (GameObject player in CameraFollow2.Instance.players)
+        {
+
+            Destroy(player);
+        }
+        Destroy(GameObject.FindGameObjectWithTag("Pollo"));
+        Dead();
+
+
+    }
+    public void Dead()
+    {
+        dead.SetActive(true);
+    }
+    public void Continue()
+    {
+       
+        SceneManager.LoadScene(0);
     }
 }

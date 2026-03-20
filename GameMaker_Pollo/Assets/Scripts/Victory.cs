@@ -9,7 +9,6 @@ public class Victory : MonoBehaviour
     void Start()
     {
         victory.SetActive(false);
-        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -21,16 +20,25 @@ public class Victory : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Finish"))
         {
+            foreach (GameObject player in CameraFollow2.Instance.players)
+            {
+
+                Destroy(player);
+            }
+            Destroy(GameObject.FindGameObjectWithTag("Pollo"));
             Finish();
         }
     }
-    public void Reset()
-    {
-        SceneManager.LoadScene(1);
-    }
+    
+    
     public void Finish()
     {
         victory.SetActive(true);
-       Time.timeScale = 0;
+    }
+    
+    public void Continue()
+    {
+       
+        SceneManager.LoadScene(0);
     }
 }
