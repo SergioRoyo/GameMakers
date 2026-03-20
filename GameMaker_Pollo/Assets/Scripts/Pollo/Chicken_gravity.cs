@@ -23,14 +23,9 @@ public class Chicken_gravity : MonoBehaviour
            
             float verticalSpeed = rb.linearVelocity.y; 
 
-            if (verticalSpeed > 0.1f)
-            {
+            
                 gravity = -10f;
-            }
-            else if (verticalSpeed < -0.1f)
-            {
-                gravity = -2.5f;
-            }
+            
         }
     }
     void FixedUpdate()

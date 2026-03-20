@@ -135,7 +135,7 @@ MonoBehaviour:
   velocidadGiro: 800
   rb: {fileID: 0}
   isGrounded: 0
-  distanciaRayo: 0.3
+  distanciaRayo: 1.8
   capaSuelo:
     serializedVersion: 2
     m_Bits: 64

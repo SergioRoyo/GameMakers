@@ -29,7 +29,7 @@ public class ControladorJugador : MonoBehaviour
     public Rigidbody rb;
     private Vector2 input;
     public bool isGrounded;
-    public float distanciaRayo = 1.1f;
+    public float distanciaRayo =1.1f;
     public LayerMask capaSuelo;
     public Chicken_take chicken_Take;
     public FLACO_CONTROLLER flaco_controller;

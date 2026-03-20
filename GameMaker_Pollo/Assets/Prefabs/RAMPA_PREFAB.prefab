@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4344599101094094050}
   - component: {fileID: 8977257895106501196}
   - component: {fileID: 1343643585007613178}
-  - component: {fileID: 7844071448560610305}
   m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
@@ -29,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.81, z: 0}
-  m_LocalScale: {x: 0.61993, y: 0.61993, z: 0.61993}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8626139410563313197}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -91,28 +90,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7844071448560610305
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3890319123276560061}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7239858117416195928
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,15 +268,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ca3b6c7422088f3438ad01d7c81244fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.71
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca3b6c7422088f3438ad01d7c81244fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.81
+      value: -0.79
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca3b6c7422088f3438ad01d7c81244fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.25
+      value: -0.02
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ca3b6c7422088f3438ad01d7c81244fd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -339,7 +316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ca3b6c7422088f3438ad01d7c81244fd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6830945432629781959, guid: ca3b6c7422088f3438ad01d7c81244fd, type: 3}
       propertyPath: m_LocalPosition.x
