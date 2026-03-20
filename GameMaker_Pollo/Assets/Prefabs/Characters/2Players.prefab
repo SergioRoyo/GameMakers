@@ -257,7 +257,7 @@ MonoBehaviour:
   timeCaidaPollo: 2
   chicken_Gravity: {fileID: 0}
   controladorJugador: {fileID: 0}
-  timeToResetCollider: 2
+  timeToResetCollider: 0.2
   aire: 0
   polloSpeed: 6.5
   dropForceUp: 0.55

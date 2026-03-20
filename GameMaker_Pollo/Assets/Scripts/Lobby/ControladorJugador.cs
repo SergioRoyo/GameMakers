@@ -77,7 +77,7 @@ public class ControladorJugador : MonoBehaviour
 
             if (input.magnitude > 0.1f)
             {
-
+                animator.SetBool("runG", true);
                 if (chicken_Take.take && !flaco_controller.scaling)
                 {
                     animator.SetBool("runF", false);
@@ -121,6 +121,7 @@ public class ControladorJugador : MonoBehaviour
             }
             else
             {
+                animator.SetBool("runG", false);
                 if (!chicken_Take.take)
                 {
                

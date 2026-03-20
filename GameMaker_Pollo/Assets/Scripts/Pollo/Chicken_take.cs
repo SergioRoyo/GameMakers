@@ -242,6 +242,7 @@ public class Chicken_take : MonoBehaviour
         Colores = 0;
 
         timer = timeToResetCollider;
+       
     }
 
 
