@@ -76,11 +76,7 @@ NavMeshProjectSettings:
     agentRadius: 1
     agentHeight: 1
     agentSlope: 43.5
-<<<<<<< HEAD
     agentClimb: 2.4
-=======
-    agentClimb: 1.2
->>>>>>> parent of 4ea23d1 (NAVMESH FIXED :))
     ledgeDropHeight: 9.3
     maxJumpAcrossDistance: 10
     minRegionArea: 2
