@@ -191,7 +191,8 @@ public class Chicken_take : MonoBehaviour
     {
         if (!flaco_controller.scaling)
         {
-            
+            controladorJugador.animator.SetBool("runFP", false);
+            controladorJugador.animator.SetBool("descansoFP", false);
             controladorJugador.animator.SetTrigger("throwF");
 
         }

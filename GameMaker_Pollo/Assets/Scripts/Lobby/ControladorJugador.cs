@@ -77,12 +77,14 @@ public class ControladorJugador : MonoBehaviour
 
             if (input.magnitude > 0.1f)
             {
+
                 if (chicken_Take.take && !flaco_controller.scaling)
                 {
                     animator.SetBool("runF", false);
                     animator.SetBool("runFS", false);
                     animator.SetBool("runFPS", false);
-
+                    
+                    
                     animator.SetBool("runFP", true);
                 }
                 else if (chicken_Take.take && flaco_controller.scaling)
@@ -105,13 +107,13 @@ public class ControladorJugador : MonoBehaviour
                 }
                 else if(!chicken_Take.take && !flaco_controller.scaling)
                 {
-                    animator.SetBool("runGP", false);
+                  
                     animator.SetBool("runFP", false);
                     animator.SetBool("runFS", false);
                     animator.SetBool("runFPS", false);
 
 
-                    animator.SetBool("runG", true);
+                   
                     animator.SetBool("runF", true);
 
 
@@ -121,20 +123,42 @@ public class ControladorJugador : MonoBehaviour
             {
                 if (!chicken_Take.take)
                 {
-                    animator.SetBool("runF", false);
+               
+
                     if (flaco_controller.scaling)
                     {
                         animator.SetBool("runFS", false);
+                        animator.SetBool("descansoFPS", false);
+                        animator.SetBool("descansoFP", false);
                         animator.SetBool("descansoFS", true);
+                    }
+                    else
+                    {
+                    animator.SetBool("runF", false);
+                        animator.SetBool("descansoFPS", false);
+                        animator.SetBool("descansoFP", false);
+                        animator.SetBool("descansoFS", false);
+                        animator.SetTrigger("descanso");
+
                     }
                 }
                 else if(chicken_Take.take) 
                 {
-                    animator.SetBool("runFP", false);
                     if (flaco_controller.scaling)
                     {
                         animator.SetBool("runFPS", false);
+                       
+                        animator.SetBool("descansoFP", false);
+                        animator.SetBool("descansoFS", false);
+
                         animator.SetBool("descansoFPS", true);
+                    }
+                    else{
+                        animator.SetBool("descansoFPS", false);
+                   
+                        animator.SetBool("descansoFS", false);
+                        animator.SetBool("runFP", false);
+                    animator.SetBool("descansoFP", true);
                     }
                 }
 
