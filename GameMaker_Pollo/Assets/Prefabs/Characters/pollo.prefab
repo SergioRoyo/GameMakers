@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chicken_gravity
   gravity: -10
-  downGravity: -3.5
+  downGravity: -10
   sueleando: 0
 --- !u!1001 &1129329727092287360
 PrefabInstance:

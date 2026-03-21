@@ -242,6 +242,7 @@ public class Chicken_take : MonoBehaviour
         Colores = 0;
 
         timer = timeToResetCollider;
+       
     }
 
 
@@ -272,12 +273,16 @@ public class Chicken_take : MonoBehaviour
         {
             DropChicken();
             pollo.GetComponent<Renderer>().material.color = Listacolores[0];
+            pollo.transform.localScale= new Vector3(1,1,1);
         }
         else
         {
             pollo.GetComponent<Renderer>().material.color = Listacolores[Colores % Listacolores.Length];
             Colores++;
             Tiempo++;
+            Vector3 crecimiento = new Vector3(0.01f, 0.01f, 0.01f);
+
+            pollo.transform.localScale += crecimiento;
             StartCoroutine(changeColor());
         }
     }

@@ -17,6 +17,7 @@ TagManager:
   - PUENTE
   - manosGordo
   - manosFlaco
+  - pmuerte
   layers:
   - Default
   - TransparentFX

@@ -25,7 +25,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
     public float CoolTime = 3;
 
     public float rampaJump = 6f;
-    public bool habilidad2=true;
+    public bool habilidad2 = true;
     public Transform manosScaled;
     public Transform manosNormal;
     public Chicken_take chicken_Take;
@@ -64,18 +64,18 @@ public class FLACO_CONTROLLER : MonoBehaviour
     {
         if (scene.name == "GAMEPLAY_Scene")
         {
-           
+
             if (this.gameObject == GameObject.Find("Jugador_1"))
             {
-               
+
                 visualCoolDown = Canvas_Manager.Instance.P1slider;
             }
             else if (this.gameObject == GameObject.Find("Jugador_2"))
             {
-               
+
                 visualCoolDown = Canvas_Manager.Instance.P2slider;
             }
-           
+
             visualCoolDown.maxValue = CoolTime;
             visualCoolDown.minValue = 0;
             visualCoolDown.value = 0;
@@ -95,10 +95,10 @@ public class FLACO_CONTROLLER : MonoBehaviour
             rampaGhost.SetActive(true);
             rampaSwitch = true;
             rampaVisual = other.transform.GetChild(0).gameObject;
-          
 
-           
-            
+
+
+
         }
         if (other.CompareTag("H2Gordo"))
         {
@@ -113,7 +113,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
         {
             rampaGhost.SetActive(false);
             col.material = noFriction;
-          
+
             flacoTraje.SetActive(true);
             controladorJugador.animator.SetTrigger("descanso");
 
@@ -127,14 +127,23 @@ public class FLACO_CONTROLLER : MonoBehaviour
     private void OnHabilidad2()
     {
         if (!enabled) return;
-
-        if (rampaSwitch)
+        if (chicken_Take.take)
         {
-           habilidad2 = true;
-            rampaVisual.SetActive(true);
-            rampaGhost.SetActive(false);
-            flacoTraje.SetActive(false);
+            return;
         }
+        else
+        {
+            if (rampaSwitch)
+            {
+                habilidad2 = true;
+                rampaVisual.SetActive(true);
+                rampaGhost.SetActive(false);
+                flacoTraje.SetActive(false);
+            }
+
+
+        }
+
     }
     private void OnHabilidad1()
     {
@@ -170,12 +179,12 @@ public class FLACO_CONTROLLER : MonoBehaviour
         controladorJugador.colliderPersonaje.center = new Vector3(0, 1.072925f, 0.05180952f);
 
         chicken_Take.manos = manosScaled;
-        if(chicken_Take.take) 
+        if (chicken_Take.take)
         {
 
-        chicken_Take.pollo.transform.SetParent(chicken_Take.manos);
-        chicken_Take.pollo.transform.localPosition = Vector3.zero;
-        chicken_Take.pollo.transform.localRotation = Quaternion.identity;
+            chicken_Take.pollo.transform.SetParent(chicken_Take.manos);
+            chicken_Take.pollo.transform.localPosition = Vector3.zero;
+            chicken_Take.pollo.transform.localRotation = Quaternion.identity;
         }
 
         yield return new WaitForSeconds(scaleTime);
@@ -184,9 +193,9 @@ public class FLACO_CONTROLLER : MonoBehaviour
         controladorJugador.colliderPersonaje.height = 1.900662f;
         controladorJugador.colliderPersonaje.center = new Vector3(0, 0.7619121f, 0);
 
-       chicken_Take.manos = manosNormal;
+        chicken_Take.manos = manosNormal;
         if (chicken_Take.take)
-        { 
+        {
 
             chicken_Take.pollo.transform.SetParent(chicken_Take.manos);
             chicken_Take.pollo.transform.localPosition = Vector3.zero;
@@ -198,12 +207,12 @@ public class FLACO_CONTROLLER : MonoBehaviour
 
 
         controladorJugador.animator.SetTrigger("descanso");
-   
+
         flacoTrajeScaled.SetActive(false);
         scaling = false;
-                CoolTimer = 0;
-                visualCoolDown.value = 0;
-            StartCoroutine(ScaleCoolDown());
+        CoolTimer = 0;
+        visualCoolDown.value = 0;
+        StartCoroutine(ScaleCoolDown());
     }
     IEnumerator ScaleCoolDown()
     {
