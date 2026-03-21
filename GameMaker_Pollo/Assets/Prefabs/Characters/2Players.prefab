@@ -241,7 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manos: {fileID: 8213789733133125483}
   fuerzaLanzamiento: 4.5
-  esperaParaRecoger: 2
+  esperaParaRecoger: 0.2
   take: 0
   Listacolores:
   - {r: 1, g: 0.868332, b: 0, a: 0}
@@ -257,7 +257,7 @@ MonoBehaviour:
   timeCaidaPollo: 2
   chicken_Gravity: {fileID: 0}
   controladorJugador: {fileID: 0}
-  timeToResetCollider: 0.2
+  timeToResetCollider: 0.3
   aire: 0
   polloSpeed: 6.5
   dropForceUp: 0.55

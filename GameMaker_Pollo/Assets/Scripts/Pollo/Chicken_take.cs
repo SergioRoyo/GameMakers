@@ -273,6 +273,7 @@ public class Chicken_take : MonoBehaviour
         {
             DropChicken();
             pollo.GetComponent<Renderer>().material.color = Listacolores[0];
+            pollo.transform.localScale= new Vector3(1,1,1);
         }
         else
         {
