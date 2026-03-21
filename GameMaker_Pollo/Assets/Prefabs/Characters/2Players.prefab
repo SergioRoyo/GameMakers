@@ -305,7 +305,7 @@ MonoBehaviour:
   rampaGhost: {fileID: 0}
   rampaSwitch: 0
   controladorJugador: {fileID: 0}
-  H2gordoForce: 20
+  H2gordoForce: 400
   noFriction: {fileID: 13400000, guid: da0a176c7257fe04f9bde025d86ab946, type: 2}
   fullFriction: {fileID: 13400000, guid: d507cd2143abc9549990590db9987af7, type: 2}
   flacoTraje: {fileID: 4467494740383641344}

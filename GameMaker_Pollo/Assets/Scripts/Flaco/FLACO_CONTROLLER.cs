@@ -102,6 +102,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
         }
         if (other.CompareTag("H2Gordo"))
         {
+            Debug.Log("qpasaaa");
             controladorJugador.rb.AddForce(Vector3.up * H2gordoForce, ForceMode.Impulse);
         }
     }
