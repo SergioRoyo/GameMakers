@@ -12822,7 +12822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1274430475747641231, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1800934160520594777, guid: 1a7b87cd58d1b9f44934764457a53919, type: 3}
       propertyPath: m_Enabled
@@ -27754,7 +27754,7 @@ MonoBehaviour:
         value:
           x: -0.00000041390248
           y: 0.7855002
-          z: 0.00000032609574
+          z: 0.00000032609572
           w: -0.61886126
     - Position:
         x: -86.6
