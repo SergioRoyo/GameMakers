@@ -18,6 +18,7 @@ TagManager:
   - manosGordo
   - manosFlaco
   - pmuerte
+  - saltoP
   layers:
   - Default
   - TransparentFX

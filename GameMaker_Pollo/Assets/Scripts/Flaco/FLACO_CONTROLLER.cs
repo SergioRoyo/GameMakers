@@ -29,6 +29,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
     public Transform manosScaled;
     public Transform manosNormal;
     public Chicken_take chicken_Take;
+    public Transform saltoPo;
     void Start()
     {
         chicken_Take = GetComponent<Chicken_take>();
@@ -96,7 +97,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
             rampaSwitch = true;
             rampaVisual = other.transform.GetChild(0).gameObject;
 
-
+            saltoPo = other.transform.GetChild(3);
 
 
         }
@@ -122,6 +123,10 @@ public class FLACO_CONTROLLER : MonoBehaviour
             rampaSwitch = false;
             controladorJugador.jumpForce = controladorJugador.jumpForceFlaco;
             habilidad2 = false;
+
+            saltoPo = other.transform.GetChild(3);
+
+
         }
 
     }
@@ -140,6 +145,10 @@ public class FLACO_CONTROLLER : MonoBehaviour
                 rampaVisual.SetActive(true);
                 rampaGhost.SetActive(false);
                 flacoTraje.SetActive(false);
+             
+                Vector3 saltoP = saltoPo.transform.position;
+                this.gameObject.transform.position = saltoP;
+
             }
 
 
