@@ -48,7 +48,7 @@ public class Chicken_take : MonoBehaviour
     {
         flaco_controller= GetComponent<FLACO_CONTROLLER>();
         aire = false;
-
+        
         if (polloagent != null)
             polloagent.destination = chickenGoal.transform.position; // le da destino al navmesh del pollo
         controladorJugador = GetComponent<ControladorJugador>();
@@ -69,9 +69,10 @@ public class Chicken_take : MonoBehaviour
             //agregamos quien es el pollo por codigo, el destino del naavmesh
             pollo = GameObject.FindGameObjectWithTag("Pollo");
             polloagent = pollo.transform.GetComponent<NavMeshAgent>();
+            polloagent.enabled = false;
             chicken_Gravity = pollo.GetComponent<Chicken_gravity>();
             chickenGoal = GameObject.FindGameObjectWithTag("TOXIC");
-            polloagent.destination = chickenGoal.transform.position;
+            //polloagent.destination = chickenGoal.transform.position;
             polloagent.speed = polloSpeed;
             GameObject[] metas = GameObject.FindGameObjectsWithTag("TOXIC");
             listaDeDestinos.Clear(); // Limpiamos la lista anterior

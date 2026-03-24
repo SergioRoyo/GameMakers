@@ -12,7 +12,7 @@ public class Chicken_gravity : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        sueleando = true;
+        sueleando = false;
     }
 
     // Update is called once per frame
