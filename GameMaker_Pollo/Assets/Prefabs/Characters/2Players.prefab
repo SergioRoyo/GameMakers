@@ -135,7 +135,7 @@ MonoBehaviour:
   velocidadGiro: 800
   rb: {fileID: 0}
   isGrounded: 0
-  distanciaRayo: 1.8
+  distanciaRayo: 0.5
   capaSuelo:
     serializedVersion: 2
     m_Bits: 64
@@ -147,6 +147,7 @@ MonoBehaviour:
   animator: {fileID: 5764983728654932632}
   gordoAnimator: {fileID: 5764983728654932632}
   flacoAnimator: {fileID: 1245444721263693535}
+  caratulas: 1
 --- !u!114 &-3668468891802940170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,8 +280,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Gordo_Controller
   controladorJugador: {fileID: 8794860839674857864}
   chicken_Take: {fileID: 0}
-  speedMultiply: 2.8
-  resetSpeed: 2
+  speedMultiply: 4.3
+  resetSpeed: 2.9
   canRodar: 1
   rodandoTime: 0.5
   habilidad2: {fileID: 0}

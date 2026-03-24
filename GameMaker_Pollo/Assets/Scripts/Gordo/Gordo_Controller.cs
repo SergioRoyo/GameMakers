@@ -19,13 +19,13 @@ public class Gordo_Controller : MonoBehaviour
     bool coolDown = false;
 
     public Slider visualCoolDown;
-    public float CoolTimer=0;
-    public float CoolTime=3;
+    public float CoolTimer = 0;
+    public float CoolTime = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
         controladorJugador = GetComponent<ControladorJugador>();
         chicken_Take = GetComponent<Chicken_take>();
     }
@@ -36,7 +36,7 @@ public class Gordo_Controller : MonoBehaviour
         if (coolDown)
         {
 
-         CoolTimer += Time.deltaTime;
+            CoolTimer += Time.deltaTime;
             visualCoolDown.value = CoolTimer;
         }
     }
@@ -53,18 +53,18 @@ public class Gordo_Controller : MonoBehaviour
     {
         if (scene.name == "GAMEPLAY_Scene")
         {
-           
+
             if (this.gameObject == GameObject.Find("Jugador_1"))
             {
-               
+
                 visualCoolDown = Canvas_Manager.Instance.P1slider;
             }
             else if (this.gameObject == GameObject.Find("Jugador_2"))
             {
-              
+
                 visualCoolDown = Canvas_Manager.Instance.P2slider;
             }
-          
+
             visualCoolDown.maxValue = CoolTime;
             visualCoolDown.minValue = 0;
             visualCoolDown.value = 0;
@@ -76,10 +76,10 @@ public class Gordo_Controller : MonoBehaviour
         if (!enabled) return;
         if (!coolDown)
         {
-           
+
             if (controladorJugador.isGrounded && Physics.Raycast(transform.position, Vector3.down, controladorJugador.distanciaRayo, controladorJugador.capaSuelo) && canRodar)
             {
-                controladorJugador.colliderPersonaje.radius = 0.3342683f;
+                controladorJugador.colliderPersonaje.radius = 0.15f;
                 controladorJugador.colliderPersonaje.height = 0.9376385f;
                 controladorJugador.colliderPersonaje.center = new Vector3(0, 0.2804004f, 0.05180952f);
                 StartCoroutine(Rodar());
@@ -98,8 +98,8 @@ public class Gordo_Controller : MonoBehaviour
         controladorJugador.colliderPersonaje.radius = 0.4f;
         controladorJugador.colliderPersonaje.height = 1.459375f;
         controladorJugador.colliderPersonaje.center = new Vector3(0, 0.5412684f, 0.05180952f);
-                CoolTimer = 0;
-                visualCoolDown.value = 0;
+        CoolTimer = 0;
+        visualCoolDown.value = 0;
         StartCoroutine(DashCoolDown());
     }
     public void OnHabilidad2()

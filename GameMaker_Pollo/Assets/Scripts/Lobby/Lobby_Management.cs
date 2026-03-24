@@ -136,7 +136,7 @@ public class Lobby_Management : MonoBehaviour
 
     void EmpezarJuego()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void NewPlayer(PlayerInput input)
