@@ -161,6 +161,7 @@ public class FLACO_CONTROLLER : MonoBehaviour
 
     IEnumerator Scale()
     {
+        visualCoolDown.value = 0;
         scaling = true;
         //flacoTraje.SetActive(false);
         //flacoTrajeScaled.SetActive(true);

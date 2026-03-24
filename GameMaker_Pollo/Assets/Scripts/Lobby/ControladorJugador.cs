@@ -42,6 +42,7 @@ public class ControladorJugador : MonoBehaviour
     public Animator animator;
     public Animator gordoAnimator;
     public Animator flacoAnimator;
+    public int caratulas = 1;
 
     void Awake()
     {
@@ -58,6 +59,16 @@ public class ControladorJugador : MonoBehaviour
     }
     private void Update()
     {
+        if(caratulas == 1)
+        {
+            Canvas_Manager.Instance.Cartulas1();
+        }
+        else if(caratulas == 2)
+        {
+            Canvas_Manager.Instance.Cartulas2();
+        }
+
+
         if (rb != null)
         {
 

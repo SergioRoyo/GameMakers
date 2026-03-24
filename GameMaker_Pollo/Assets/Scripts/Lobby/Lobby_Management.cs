@@ -19,6 +19,8 @@ public class Lobby_Management : MonoBehaviour
     public GameObject p1;
     public GameObject p2;
 
+    public ControladorJugador controladorJugador;
+   
     public bool p2Active = false;
 
 
@@ -39,7 +41,7 @@ public class Lobby_Management : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
         if (PlayerConected == 2)
         {
             if (!p2Active)
@@ -116,6 +118,7 @@ public class Lobby_Management : MonoBehaviour
                 // CASO A: P1 Gordo, P2 Flaco
                 listaJugadores[0].PonerseTrajeGordo();
                 listaJugadores[1].PonerseTrajeFlaco();
+                controladorJugador.caratulas = 1;
 
                 teamChosed = true;
                 break;
@@ -124,6 +127,7 @@ public class Lobby_Management : MonoBehaviour
                 // CASO B: P1 Flaco, P2 Gordo
                 listaJugadores[0].PonerseTrajeFlaco();
                 listaJugadores[1].PonerseTrajeGordo();
+                controladorJugador.caratulas = 2;
 
                 teamChosed = true;
                 break;
@@ -141,6 +145,7 @@ public class Lobby_Management : MonoBehaviour
         input.gameObject.name = "Jugador_" + PlayerConected;
         listaJugadores.Add(input.GetComponent<ControladorJugador>());
         DontDestroyOnLoad(input.gameObject);
+        controladorJugador = input.GetComponent<ControladorJugador>();
     }
 
 }
