@@ -90,8 +90,22 @@ public class ControladorJugador : MonoBehaviour
             {
                 if (animator == gordoAnimator)
                 {
+                    if (!chicken_Take.take)
+                    {
+                        animator.SetBool("runGP", false);
 
-                animator.SetBool("runG", true);
+                        animator.SetBool("descanso", false);
+                        animator.SetBool("descansoGP", false);
+                        animator.SetBool("runG", true);
+                    }
+                    else if (chicken_Take.take)
+                    {
+                        animator.SetBool("runG", false);
+                        animator.SetBool("descanso", false);
+                        animator.SetBool("descansoGP", false);
+                        animator.SetBool("runGP", true);
+                    }
+
                 }
                 else if(animator == flacoAnimator)
                 {
@@ -144,7 +158,24 @@ public class ControladorJugador : MonoBehaviour
                 if (animator == gordoAnimator)
                 {
 
-                    animator.SetBool("runG", false);
+                    if (!chicken_Take.take)
+                    {
+                        animator.SetBool("runGP", false);
+
+                        animator.SetBool("descansoGP", false);
+                        animator.SetBool("runG", false);
+                        animator.SetBool("descanso", true);
+                    }
+                    else if (chicken_Take.take)
+                    {
+                        animator.SetBool("runG", false);
+                        animator.SetBool("descanso", false);
+                        animator.SetBool("runGP", false);
+                        animator.SetBool("descansoGP", true);
+                    }
+
+
+                   
                 }
                 else if (animator == flacoAnimator)
                 {

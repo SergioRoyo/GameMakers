@@ -212,14 +212,12 @@ public class FLACO_CONTROLLER : MonoBehaviour
             chicken_Take.pollo.transform.localPosition = Vector3.zero;
             chicken_Take.pollo.transform.localRotation = Quaternion.identity;
         }
-        flacoTraje.SetActive(true);
         controladorJugador.animator.SetBool("runFPS", false);
         controladorJugador.animator.SetBool("descansoFS", false);
 
 
         controladorJugador.animator.SetTrigger("descanso");
 
-        flacoTrajeScaled.SetActive(false);
         scaling = false;
         CoolTimer = 0;
         visualCoolDown.value = 0;

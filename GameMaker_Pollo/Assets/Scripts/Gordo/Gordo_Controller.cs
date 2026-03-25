@@ -82,6 +82,10 @@ public class Gordo_Controller : MonoBehaviour
                 controladorJugador.colliderPersonaje.radius = 0.15f;
                 controladorJugador.colliderPersonaje.height = 0.9376385f;
                 controladorJugador.colliderPersonaje.center = new Vector3(0, 0.2804004f, 0.05180952f);
+                controladorJugador.animator.SetBool("descanso", false);
+                controladorJugador.animator.SetBool("runG", false);
+
+                controladorJugador.animator.SetBool("rodar", true);
                 StartCoroutine(Rodar());
             }
 
