@@ -101,7 +101,7 @@ Material:
     - _CaveBlend: 0
     - _CaveDistortion: 0
     - _DepthCompareDistance: 0.1
-    - _DepthFadeDistance: 10
+    - _DepthFadeDistance: 0
     - _FoamBlend: 0.09
     - _FresnelPower: 1
     - _GradientRefractionScale: 10
@@ -159,7 +159,7 @@ Material:
     - _IntersectionFoamColor: {r: 1.1486984, g: 1.1486984, b: 1.1486984, a: 0.49019608}
     - _PositionRipples: {r: 0, g: 0, b: 0, a: 0}
     - _SecondaryFoamColor: {r: 0.14524741, g: 0.15822448, b: 0.6037736, a: 0}
-    - _ShallowColor: {r: 0.1517444, g: 0.50308645, b: 0.5849056, a: 1}
+    - _ShallowColor: {r: 0.10239409, g: 0.31723225, b: 0.3679245, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 0.31764707}
     - _SurfaceFoamColor: {r: 1.7129308, g: 1.7129308, b: 1.7129308, a: 0.03529412}
     - _TopColor: {r: 0, g: 0.17848217, b: 0.5622641, a: 0.44705883}

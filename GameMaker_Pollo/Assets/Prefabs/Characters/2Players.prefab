@@ -260,7 +260,7 @@ MonoBehaviour:
   controladorJugador: {fileID: 0}
   timeToResetCollider: 0.3
   aire: 0
-  polloSpeed: 6.5
+  polloSpeed: 4.5
   dropForceUp: 0.55
   dropForceForward: 0.75
   flaco_controller: {fileID: 0}
@@ -323,6 +323,7 @@ MonoBehaviour:
   manosScaled: {fileID: 4529375095997716355}
   manosNormal: {fileID: 7100189262674851772}
   chicken_Take: {fileID: 0}
+  saltoPo: {fileID: 0}
 --- !u!114 &8278020740983384944
 MonoBehaviour:
   m_ObjectHideFlags: 0
