@@ -11,6 +11,7 @@ public class TOXIC : MonoBehaviour
     public bool muerto2 = false;
     public GameObject cielo;
     public GameObject dead;
+    public GameObject interfaz;
     private void Awake()
     {
         if (Instance == null)
@@ -31,6 +32,7 @@ public class TOXIC : MonoBehaviour
     void Start()
     {
         dead.SetActive(false);
+        interfaz.SetActive(true);
         muerto1 = false;
         muerto2 = false;
         player = 0;
@@ -99,6 +101,7 @@ public class TOXIC : MonoBehaviour
     public void Dead()
     {
         dead.SetActive(true);
+      interfaz.SetActive(false);
     }
     public void Continue()
     {
