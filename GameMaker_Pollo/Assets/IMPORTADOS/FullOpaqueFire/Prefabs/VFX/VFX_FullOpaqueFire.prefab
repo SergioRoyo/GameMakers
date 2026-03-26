@@ -287,7 +287,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.10577655
+      scalar: 0.10737114
       minScalar: 0.08
       maxCurve:
         serializedVersion: 2
@@ -870,7 +870,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 39.666203
+      scalar: 40.26417
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -5132,7 +5132,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.13222064
+      scalar: 0.1342139
       minScalar: 0.15
       maxCurve:
         serializedVersion: 2
@@ -5715,7 +5715,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3.9666212
+      scalar: 4.026418
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -10071,7 +10071,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.026444137
+      scalar: 0.026842784
       minScalar: 0.03
       maxCurve:
         serializedVersion: 2
@@ -10654,7 +10654,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 26.444132
+      scalar: 26.842781
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -14925,7 +14925,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.026444137
+      scalar: 0.026842784
       minScalar: 0.03
       maxCurve:
         serializedVersion: 2
@@ -15508,7 +15508,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 26.444132
+      scalar: 26.842781
       minScalar: 10
       maxCurve:
         serializedVersion: 2
