@@ -270,7 +270,7 @@ public class Chicken_take : MonoBehaviour
     IEnumerator changeColor()
     {
         yield return new WaitForSeconds(1f);
-        if (Tiempo >= 5)
+        if (Tiempo >= 10)
         {
             DropChicken();
             pollo.GetComponent<Renderer>().material.color = Listacolores[0];

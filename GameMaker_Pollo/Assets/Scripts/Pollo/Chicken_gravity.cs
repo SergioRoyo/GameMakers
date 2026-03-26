@@ -28,14 +28,14 @@ public class Chicken_gravity : MonoBehaviour
             
         }
     }
-    void FixedUpdate()
-    {
+    //void FixedUpdate()
+    //{
         
-        Vector3 gravedadCustom = transform.up * gravity;
+    //    Vector3 gravedadCustom = transform.up * gravity;
 
        
-        rb.AddForce(gravedadCustom, ForceMode.Acceleration);
-    }
+    //    rb.AddForce(gravedadCustom, ForceMode.Acceleration);
+    //}
     private void OnCollisionStay(Collision other)
     {
         if (other.gameObject.CompareTag("Suelo"))

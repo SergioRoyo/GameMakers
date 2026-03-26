@@ -12,6 +12,7 @@ public class TOXIC : MonoBehaviour
     public GameObject cielo;
     public GameObject dead;
     public GameObject interfaz;
+    public Chicken_take chicken_Take;
     private void Awake()
     {
         if (Instance == null)
@@ -51,25 +52,41 @@ public class TOXIC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
+                chicken_Take=other.GetComponent<Chicken_take>();
             Vector3 cieloT = cielo.transform.position;
             other.transform.position = cieloT;
             if (other.name == "Jugador_1")
             {
-                muerto1 = true;
+                if (chicken_Take.take)
+                {
+                    ResetGame();
+                }
+                else
+                {
+                    muerto1 = true;
                 GameObject otro = GameObject.Find("Jugador_2");
                 revivirController = otro.GetComponent<Revivir_Controller>();
                 revivirController.vidasCount--;
                 revivirController.muerto = true;
                 player = 1;
+
+                }
             }
             else if (other.name == "Jugador_2")
             {
-                muerto2 = true;
-                GameObject otro = GameObject.Find("Jugador_1");
-                revivirController = otro.GetComponent<Revivir_Controller>();
-                revivirController.vidasCount--;
-                revivirController.muerto = true;
-                player = 2;
+                if (chicken_Take.take)
+                {
+                    ResetGame();
+                }
+                else
+                {
+                    muerto2 = true;
+                    GameObject otro = GameObject.Find("Jugador_1");
+                    revivirController = otro.GetComponent<Revivir_Controller>();
+                    revivirController.vidasCount--;
+                    revivirController.muerto = true;
+                    player = 2;
+                }
             }
             if (revivirController.vidasCount < 0)
             {

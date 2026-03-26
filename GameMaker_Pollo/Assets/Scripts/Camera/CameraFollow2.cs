@@ -46,6 +46,10 @@ public class CameraFollow2 : MonoBehaviour
         foreach (GameObject player in players)
         {
             if (player == null) continue;
+            if (player.transform.position.y < -500)
+            {
+                continue; // Saltamos a este jugador y no lo contamos para la cámara
+            }
 
             // Buscamos el punto más cercano del jugador en el Spline
             SplineUtility.GetNearestPoint(splinePath.Spline, splinePath.transform.InverseTransformPoint(player.transform.position), out var nearestPoint, out float t);

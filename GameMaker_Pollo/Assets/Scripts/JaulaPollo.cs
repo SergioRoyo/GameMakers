@@ -40,7 +40,7 @@ public class JaulaPollo : MonoBehaviour
         {
             jaula.SetActive(false);
             pollo.enabled = true;
-            
+            Destroy(this.gameObject);
 
         }
     }

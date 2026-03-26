@@ -87,7 +87,7 @@ public class ControladorJugador : MonoBehaviour
             }
             else if (verticalSpeed < -0.1f)
             {
-                gravity = downGravity;
+                gravity = -9.8f;
             }
         }
         if (animator != null)

@@ -132,7 +132,7 @@ MonoBehaviour:
   jumpForceFlaco: 110
   dropForceUpFlaco: 1.05
   dropForceForwardFlaco: 0.4
-  velocidadGiro: 800
+  velocidadGiro: 904.5
   rb: {fileID: 0}
   isGrounded: 0
   distanciaRayo: 0.5
@@ -260,7 +260,7 @@ MonoBehaviour:
   controladorJugador: {fileID: 0}
   timeToResetCollider: 0.3
   aire: 0
-  polloSpeed: 4.5
+  polloSpeed: 3.5
   dropForceUp: 0.55
   dropForceForward: 0.75
   flaco_controller: {fileID: 0}
