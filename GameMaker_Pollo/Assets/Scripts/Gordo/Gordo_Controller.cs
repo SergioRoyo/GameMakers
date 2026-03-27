@@ -94,17 +94,45 @@ public class Gordo_Controller : MonoBehaviour
     public IEnumerator Rodar()
     {
         canRodar = false;
-        controladorJugador.speed = controladorJugador.speed * speedMultiply;
-        yield return new WaitForSeconds(rodandoTime);
+
+        // Guardamos la velocidad base (la que tiene el personaje al caminar)
+        float velocidadBase = resetSpeed;
+        float velocidadDash = velocidadBase * speedMultiply;
+
+        float tiempoPasado = 0;
+        while (tiempoPasado < rodandoTime)
+        {
+            // Lanzamos el rayo para detectar vallas
+            // He añadido "controladorJugador.capaSuelo" para que ignore el suelo y solo detecte muros/vallas
+            if (Physics.Raycast(transform.position, transform.forward, 0.7f))
+            {
+                // Si hay algo delante, velocidad normal para no atravesar
+                controladorJugador.speed = velocidadBase;
+            }
+            else
+            {
+                // Si el camino está despejado, ¡vuelve a la super velocidad!
+                controladorJugador.speed = velocidadDash;
+            }
+
+            tiempoPasado += Time.deltaTime;
+            yield return null;
+        }
+
+        // Al terminar los 3 segundos, volvemos siempre a la velocidad normal
         controladorJugador.speed = resetSpeed;
+
         canRodar = true;
+
+        // --- El resto de tu código (Colliders y Cooldown) está perfecto ---
         controladorJugador.colliderPersonaje.radius = 0.4f;
         controladorJugador.colliderPersonaje.height = 1.459375f;
         controladorJugador.colliderPersonaje.center = new Vector3(0, 0.5412684f, 0.05180952f);
         CoolTimer = 0;
         visualCoolDown.value = 0;
         StartCoroutine(DashCoolDown());
-    }
+    
+}
     public void OnHabilidad2()
     {
         if (!enabled) return;

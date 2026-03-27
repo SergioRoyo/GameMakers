@@ -194,6 +194,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victory: {fileID: 0}
+  interfaz: {fileID: 0}
+  coin1: {fileID: 0}
+  coin2: {fileID: 0}
+  coin3: {fileID: 0}
 --- !u!114 &5112754096323649979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,15 +267,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 757d22467b3a40945aaaa50aa90f495f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.72
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 757d22467b3a40945aaaa50aa90f495f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.72
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 757d22467b3a40945aaaa50aa90f495f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.72
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 757d22467b3a40945aaaa50aa90f495f, type: 3}
       propertyPath: m_LocalPosition.x
