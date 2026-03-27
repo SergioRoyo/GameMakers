@@ -136,9 +136,9 @@ public class Gordo_Controller : MonoBehaviour
     public void OnHabilidad2()
     {
         if (!enabled) return;
-        if (!chicken_Take.take && stayHabilidad2)
+        if (!chicken_Take.take && stayHabilidad2 && canRodar)
         {
-
+            
             habilidad2.SetActive(true);
             gordoTraje.SetActive(false);
         }
@@ -160,6 +160,7 @@ public class Gordo_Controller : MonoBehaviour
             stayHabilidad2 = false;
             other.transform.GetChild(0).gameObject.SetActive(false);
             gordoTraje.SetActive(true);
+            controladorJugador.animator.SetBool("descanso", true);
 
         }
     }
