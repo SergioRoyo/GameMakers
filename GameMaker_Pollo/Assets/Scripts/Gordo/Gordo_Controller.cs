@@ -20,6 +20,7 @@ public class Gordo_Controller : MonoBehaviour
     public Slider visualCoolDown;
     public float CoolTimer = 0;
     public float CoolTime = 3;
+    public bool habilidadBloqueada = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -93,6 +94,7 @@ public class Gordo_Controller : MonoBehaviour
     }
     public IEnumerator Rodar()
     {
+        habilidadBloqueada = true;
         canRodar = false;
 
         // Guardamos la velocidad base (la que tiene el personaje al caminar)
@@ -123,6 +125,7 @@ public class Gordo_Controller : MonoBehaviour
         controladorJugador.speed = resetSpeed;
 
         canRodar = true;
+        habilidadBloqueada = false;
 
         // --- El resto de tu código (Colliders y Cooldown) está perfecto ---
         controladorJugador.colliderPersonaje.radius = 0.4f;
@@ -136,7 +139,8 @@ public class Gordo_Controller : MonoBehaviour
     public void OnHabilidad2()
     {
         if (!enabled) return;
-        if (!chicken_Take.take && stayHabilidad2 && canRodar)
+        if (habilidadBloqueada) return;
+        if (!chicken_Take.take && stayHabilidad2 )
         {
             
             habilidad2.SetActive(true);
